@@ -1,6 +1,6 @@
 # AWSManager
 
-Manage resources and services on AWS
+Manage resources and services on AWS. See current Freeware version of RunIfExists at [dseichter.de](https://www.dseichter.de/aws-manager/).
 
 ## Badges
 
