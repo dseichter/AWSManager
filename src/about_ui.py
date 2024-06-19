@@ -4,7 +4,7 @@ import gui
 # import GitHubIssueClient specific libraries
 import helper
 import webbrowser
-# TODO: import icons
+import icons
 
 
 class DialogAbout(gui.dialogAbout):
@@ -17,8 +17,8 @@ class DialogAbout(gui.dialogAbout):
         self.staticTextLicence.SetLabelText(self.staticTextLicence.GetLabelText() + ' ' + helper.LICENCE)
 
         # specify all the icons
-        # TODO: gui.dialogAbout.SetIcon(self, icons.info.GetIcon())
-        # TODO: self.bitmapLogo.SetBitmap(icons.github.GetBitmap())
+        gui.dialogAbout.SetIcon(self, icons.info.GetIcon())
+        self.bitmapLogo.SetBitmap(icons.happy_cloud.GetBitmap())
         self.Fit()
 
     def openGithub(self, event):

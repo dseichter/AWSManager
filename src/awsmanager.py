@@ -10,6 +10,7 @@ import about_ui
 import configuration_ui
 import settings
 import helper
+import icons
 
 
 class AWSManagerFrame(gui.MainFrame):
@@ -17,6 +18,14 @@ class AWSManagerFrame(gui.MainFrame):
     def __init__(self, parent):
         # initialize parent class
         gui.MainFrame.__init__(self, parent)
+
+        # specify all the icons
+        gui.MainFrame.SetIcon(self, icons.happy_cloud.GetIcon())
+        self.menuitemFileClose.SetBitmap(icons.cancel.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap())
+        self.menuitemExtrasConfiguration.SetBitmap(icons.settings.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap())
+        self.menuitemHelpSupport.SetBitmap(icons.get_help.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap())
+        self.menuitemHelpUpdate.SetBitmap(icons.restart.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap())
+        self.menuitemHelpAbout.SetBitmap(icons.info.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap())
 
     def miFileClose(self, event):
         self.Close()
