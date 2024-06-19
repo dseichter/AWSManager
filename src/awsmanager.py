@@ -45,7 +45,6 @@ class AWSManagerFrame(gui.MainFrame):
         dlg.Destroy()
 
 
-
 # mandatory in wx, create an app, False stands for not deteriction stdin/stdout
 # refer manual for details
 app = wx.App(False)
