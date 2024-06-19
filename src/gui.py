@@ -9,6 +9,7 @@
 
 import wx
 import wx.xrc
+import wx.aui
 
 ID_CLOSE = 1000
 ID_CONFIGURATION = 1001
@@ -56,14 +57,22 @@ class MainFrame(wx.Frame):
 
         self.SetMenuBar(self.m_menubar1)
 
-        bSizer3 = wx.BoxSizer(wx.VERTICAL)
+        gSizer1 = wx.GridSizer(0, 1, 0, 0)
 
-        self.m_notebook1 = wx.Notebook(self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0)
-        self.m_panel1 = wx.Panel(self.m_notebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL)
-        self.m_notebook1.AddPage(self.m_panel1, u"a page", False)
+        self.m_auinotebook1 = wx.aui.AuiNotebook(self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.aui.AUI_NB_DEFAULT_STYLE)
+        self.panelEC2 = wx.Panel(self.m_auinotebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL)
+        self.m_auinotebook1.AddPage(self.panelEC2, u"EC2", True, wx.NullBitmap)
+        self.panelLambda = wx.Panel(self.m_auinotebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL)
+        self.m_auinotebook1.AddPage(self.panelLambda, u"Lambda", False, wx.NullBitmap)
+        self.panelRDS = wx.Panel(self.m_auinotebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL)
+        self.m_auinotebook1.AddPage(self.panelRDS, u"RDS", False, wx.NullBitmap)
+        self.panelS3 = wx.Panel(self.m_auinotebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL)
+        self.m_auinotebook1.AddPage(self.panelS3, u"S3", False, wx.NullBitmap)
+        self.panelCloudfront = wx.Panel(self.m_auinotebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL)
+        self.m_auinotebook1.AddPage(self.panelCloudfront, u"Cloudfront", False, wx.NullBitmap)
 
-        bSizer3.Add(self.m_notebook1, 1, wx.EXPAND | wx.ALL, 5)
-        self.SetSizer(bSizer3)
+        gSizer1.Add(self.m_auinotebook1, 1, wx.EXPAND | wx.ALL, 5)
+        self.SetSizer(gSizer1)
         self.Layout()
         self.Centre(wx.BOTH)
 
@@ -106,10 +115,10 @@ class MainFrame(wx.Frame):
 # #########################################################################
 
 
-class dialogConfiguration(wx.Frame):
+class dialogConfiguration(wx.Dialog):
 
     def __init__(self, parent):
-        wx.Frame.__init__(self, parent, id=wx.ID_ANY, title=u"Configuration", pos=wx.DefaultPosition, size=wx.Size(851, 370), style=wx.DEFAULT_FRAME_STYLE | wx.TAB_TRAVERSAL)
+        wx.Dialog.__init__(self, parent, id=wx.ID_ANY, title=u"Configuration", pos=wx.DefaultPosition, size=wx.DefaultSize, style=wx.DEFAULT_DIALOG_STYLE)
 
         self.SetSizeHints(wx.DefaultSize, wx.DefaultSize)
 
@@ -150,8 +159,7 @@ class dialogConfiguration(wx.Frame):
         fgSizer1.Add(fgSizer4, 1, wx.EXPAND, 5)
         fgSizer5 = wx.FlexGridSizer(0, 3, 0, 0)
         fgSizer5.AddGrowableCol(1)
-        fgSizer5.AddGrowableCol(2)
-        fgSizer5.AddGrowableRow(1)
+        fgSizer5.AddGrowableRow(0)
         fgSizer5.SetFlexibleDirection(wx.BOTH)
         fgSizer5.SetNonFlexibleGrowMode(wx.FLEX_GROWMODE_SPECIFIED)
 
@@ -178,7 +186,7 @@ class dialogConfiguration(wx.Frame):
         comboBoxAwsProfileChoices = []
         self.comboBoxAwsProfile = wx.ComboBox(self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, comboBoxAwsProfileChoices, 0)
         fgSizer6.Add(self.comboBoxAwsProfile, 0, wx.ALL, 5)
-        self.buttonReloadAwsProfile = wx.Button(self, wx.ID_ANY, u"MyButton", wx.DefaultPosition, wx.DefaultSize, 0)
+        self.buttonReloadAwsProfile = wx.Button(self, wx.ID_ANY, u"Reload profiles", wx.DefaultPosition, wx.DefaultSize, 0)
         fgSizer6.Add(self.buttonReloadAwsProfile, 0, wx.ALL, 5)
         self.m_staticText11 = wx.StaticText(self, wx.ID_ANY, u"If available, select exising profile. After adding new profiles, please reload.", wx.DefaultPosition, wx.DefaultSize, 0)
         self.m_staticText11.Wrap(-1)
@@ -206,10 +214,10 @@ class dialogConfiguration(wx.Frame):
         fgSizer1.Add(bSizer2, 1, wx.EXPAND, 5)
         self.SetSizer(fgSizer1)
         self.Layout()
+        fgSizer1.Fit(self)
         self.Centre(wx.BOTH)
 
         # Connect Events
-        self.Bind(wx.EVT_SHOW, self.showConfiguration)
         self.buttonReloadAwsProfile.Bind(wx.EVT_BUTTON, self.reloadAwsProfiles)
         self.buttonSave.Bind(wx.EVT_BUTTON, self.saveConfig)
         self.buttonCancel.Bind(wx.EVT_BUTTON, self.cancelConfig)
@@ -217,9 +225,6 @@ class dialogConfiguration(wx.Frame):
     def __del__(self):
         pass
     # Virtual event handlers, override them in your derived class
-
-    def showConfiguration(self, event):
-        event.Skip()
 
     def reloadAwsProfiles(self, event):
         event.Skip()
