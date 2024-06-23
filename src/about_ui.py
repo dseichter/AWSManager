@@ -26,3 +26,6 @@ class DialogAbout(gui.dialogAbout):
 
     def openIcons8(self, event):
         webbrowser.open_new_tab('https://icons8.com/')
+
+    def openIconsAWS(self, event):
+        webbrowser.open_new_tab('https://aws.amazon.com/architecture/icons/')
