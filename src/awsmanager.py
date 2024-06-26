@@ -13,6 +13,12 @@ import helper
 import icons
 import iconsaws
 
+import ui_aws_ec2
+import ui_aws_lambda
+import ui_aws_s3
+import ui_aws_rds
+import ui_aws_cloudfront
+
 
 class AWSManagerFrame(gui.MainFrame):
     # constructor
@@ -34,6 +40,16 @@ class AWSManagerFrame(gui.MainFrame):
         self.m_auinotebook1.SetPageBitmap(self.m_auinotebook1.FindPage(self.panelRDS), iconsaws.arch_amazon_rds_48.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap())
         self.m_auinotebook1.SetPageBitmap(self.m_auinotebook1.FindPage(self.panelS3), iconsaws.arch_amazon_simple_storage_service_48.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap())
         self.m_auinotebook1.SetPageBitmap(self.m_auinotebook1.FindPage(self.panelCloudfront), iconsaws.arch_amazon_cloudfront_48.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap())
+
+    def awsmanagerClose(self, event):
+        self.Close()
+
+    def awsmanagerShow(self, event):
+        # check if config.json exists, if not create it, if available, update it
+        settings.create_config()
+
+        # add the version to the label
+        self.SetTitle(helper.NAME + ' ' + helper.VERSION)
 
     def miFileClose(self, event):
         self.Close()
@@ -60,6 +76,21 @@ class AWSManagerFrame(gui.MainFrame):
         dlg = about_ui.DialogAbout(self)
         dlg.ShowModal()
         dlg.Destroy()
+
+    def aws_ec2_reload(self, event):
+        ui_aws_ec2.aws_ec2_reload(self, event)
+
+    def aws_lambda_reload(self, event):
+        ui_aws_lambda.aws_lambda_reload(self, event)
+
+    def aws_s3_reload(self, event):
+        ui_aws_s3.aws_s3_reload(self, event)
+
+    def aws_rds_reload(self, event):
+        ui_aws_rds.aws_rds_reload(self, event)
+
+    def aws_cloudfront_reload(self, event):
+        ui_aws_cloudfront.aws_cloudfront_reload(self, event)
 
 
 # mandatory in wx, create an app, False stands for not deteriction stdin/stdout

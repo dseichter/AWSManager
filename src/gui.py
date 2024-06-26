@@ -61,52 +61,52 @@ class MainFrame ( wx.Frame ):
         self.panelEC2 = wx.Panel( self.m_auinotebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
         bSizer8 = wx.BoxSizer( wx.VERTICAL )
 
-        self.m_splitter1 = wx.SplitterWindow( self.panelEC2, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.SP_3D|wx.SP_BORDER )
+        self.m_splitter1 = wx.SplitterWindow( self.panelEC2, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.SP_3D )
         self.m_splitter1.Bind( wx.EVT_IDLE, self.m_splitter1OnIdle )
 
-        self.m_panel11 = wx.Panel( self.m_splitter1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        self.panelEC2Tree = wx.Panel( self.m_splitter1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
         bSizer4 = wx.BoxSizer( wx.VERTICAL )
 
-        self.m_treeCtrl1 = wx.TreeCtrl( self.m_panel11, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TR_DEFAULT_STYLE )
-        bSizer4.Add( self.m_treeCtrl1, 1, wx.ALL|wx.EXPAND, 5 )
+        self.treeEC2 = wx.TreeCtrl( self.panelEC2Tree, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TR_DEFAULT_STYLE|wx.TR_LINES_AT_ROOT|wx.TR_TWIST_BUTTONS )
+        bSizer4.Add( self.treeEC2, 1, wx.ALL|wx.EXPAND, 5 )
 
-        self.m_button4 = wx.Button( self.m_panel11, wx.ID_ANY, u"Reload EC2 Instances", wx.DefaultPosition, wx.DefaultSize, 0 )
-        bSizer4.Add( self.m_button4, 0, wx.ALL, 5 )
+        self.buttonReloadEC2 = wx.Button( self.panelEC2Tree, wx.ID_ANY, u"Reload EC2 Instances", wx.DefaultPosition, wx.DefaultSize, 0 )
+        bSizer4.Add( self.buttonReloadEC2, 0, wx.ALL, 5 )
 
 
-        self.m_panel11.SetSizer( bSizer4 )
-        self.m_panel11.Layout()
-        bSizer4.Fit( self.m_panel11 )
-        self.m_panel15 = wx.Panel( self.m_splitter1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-        self.m_splitter1.SplitVertically( self.m_panel11, self.m_panel15, 0 )
+        self.panelEC2Tree.SetSizer( bSizer4 )
+        self.panelEC2Tree.Layout()
+        bSizer4.Fit( self.panelEC2Tree )
+        self.panelEC2Details = wx.Panel( self.m_splitter1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        self.m_splitter1.SplitVertically( self.panelEC2Tree, self.panelEC2Details, 0 )
         bSizer8.Add( self.m_splitter1, 1, wx.EXPAND, 5 )
 
 
         self.panelEC2.SetSizer( bSizer8 )
         self.panelEC2.Layout()
         bSizer8.Fit( self.panelEC2 )
-        self.m_auinotebook1.AddPage( self.panelEC2, u"EC2", False, wx.NullBitmap )
+        self.m_auinotebook1.AddPage( self.panelEC2, u"EC2", True, wx.NullBitmap )
         self.panelLambda = wx.Panel( self.m_auinotebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
         bSizer3 = wx.BoxSizer( wx.VERTICAL )
 
         self.m_splitter3 = wx.SplitterWindow( self.panelLambda, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.SP_3D )
         self.m_splitter3.Bind( wx.EVT_IDLE, self.m_splitter3OnIdle )
 
-        self.m_panel12 = wx.Panel( self.m_splitter3, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        self.panelLambdaTree = wx.Panel( self.m_splitter3, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
         bSizer7 = wx.BoxSizer( wx.VERTICAL )
 
-        self.m_treeCtrl3 = wx.TreeCtrl( self.m_panel12, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TR_DEFAULT_STYLE )
-        bSizer7.Add( self.m_treeCtrl3, 1, wx.ALL|wx.EXPAND, 5 )
+        self.treeLambda = wx.TreeCtrl( self.panelLambdaTree, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TR_DEFAULT_STYLE|wx.TR_LINES_AT_ROOT|wx.TR_TWIST_BUTTONS )
+        bSizer7.Add( self.treeLambda, 1, wx.ALL|wx.EXPAND, 5 )
 
-        self.m_button5 = wx.Button( self.m_panel12, wx.ID_ANY, u"Reload Lambda Functions", wx.DefaultPosition, wx.DefaultSize, 0 )
-        bSizer7.Add( self.m_button5, 0, wx.ALL, 5 )
+        self.buttonReloadLambda = wx.Button( self.panelLambdaTree, wx.ID_ANY, u"Reload Lambda Functions", wx.DefaultPosition, wx.DefaultSize, 0 )
+        bSizer7.Add( self.buttonReloadLambda, 0, wx.ALL, 5 )
 
 
-        self.m_panel12.SetSizer( bSizer7 )
-        self.m_panel12.Layout()
-        bSizer7.Fit( self.m_panel12 )
-        self.m_panel13 = wx.Panel( self.m_splitter3, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-        self.m_splitter3.SplitVertically( self.m_panel12, self.m_panel13, 0 )
+        self.panelLambdaTree.SetSizer( bSizer7 )
+        self.panelLambdaTree.Layout()
+        bSizer7.Fit( self.panelLambdaTree )
+        self.panelLambdaDetails = wx.Panel( self.m_splitter3, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        self.m_splitter3.SplitVertically( self.panelLambdaTree, self.panelLambdaDetails, 0 )
         bSizer3.Add( self.m_splitter3, 1, wx.EXPAND, 5 )
 
 
@@ -120,21 +120,21 @@ class MainFrame ( wx.Frame ):
         self.m_splitter11 = wx.SplitterWindow( self.panelS3, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.SP_3D )
         self.m_splitter11.Bind( wx.EVT_IDLE, self.m_splitter11OnIdle )
 
-        self.m_panel111 = wx.Panel( self.m_splitter11, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        self.panelS3Tree = wx.Panel( self.m_splitter11, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
         bSizer41 = wx.BoxSizer( wx.VERTICAL )
 
-        self.m_treeCtrl11 = wx.TreeCtrl( self.m_panel111, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TR_DEFAULT_STYLE )
-        bSizer41.Add( self.m_treeCtrl11, 1, wx.ALL|wx.EXPAND, 5 )
+        self.treeS3 = wx.TreeCtrl( self.panelS3Tree, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TR_DEFAULT_STYLE|wx.TR_LINES_AT_ROOT|wx.TR_TWIST_BUTTONS )
+        bSizer41.Add( self.treeS3, 1, wx.ALL|wx.EXPAND, 5 )
 
-        self.m_button6 = wx.Button( self.m_panel111, wx.ID_ANY, u"Reload S3 Buckets", wx.DefaultPosition, wx.DefaultSize, 0 )
-        bSizer41.Add( self.m_button6, 0, wx.ALL, 5 )
+        self.buttonReloadS3 = wx.Button( self.panelS3Tree, wx.ID_ANY, u"Reload S3 Buckets", wx.DefaultPosition, wx.DefaultSize, 0 )
+        bSizer41.Add( self.buttonReloadS3, 0, wx.ALL, 5 )
 
 
-        self.m_panel111.SetSizer( bSizer41 )
-        self.m_panel111.Layout()
-        bSizer41.Fit( self.m_panel111 )
-        self.m_panel151 = wx.Panel( self.m_splitter11, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-        self.m_splitter11.SplitVertically( self.m_panel111, self.m_panel151, 0 )
+        self.panelS3Tree.SetSizer( bSizer41 )
+        self.panelS3Tree.Layout()
+        bSizer41.Fit( self.panelS3Tree )
+        self.panelS3Details = wx.Panel( self.m_splitter11, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        self.m_splitter11.SplitVertically( self.panelS3Tree, self.panelS3Details, 0 )
         bSizer81.Add( self.m_splitter11, 1, wx.EXPAND, 5 )
 
 
@@ -148,21 +148,21 @@ class MainFrame ( wx.Frame ):
         self.m_splitter12 = wx.SplitterWindow( self.panelRDS, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.SP_3D )
         self.m_splitter12.Bind( wx.EVT_IDLE, self.m_splitter12OnIdle )
 
-        self.m_panel112 = wx.Panel( self.m_splitter12, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        self.panelRDSTree = wx.Panel( self.m_splitter12, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
         bSizer42 = wx.BoxSizer( wx.VERTICAL )
 
-        self.m_treeCtrl12 = wx.TreeCtrl( self.m_panel112, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TR_DEFAULT_STYLE )
-        bSizer42.Add( self.m_treeCtrl12, 1, wx.ALL|wx.EXPAND, 5 )
+        self.treeRDS = wx.TreeCtrl( self.panelRDSTree, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TR_DEFAULT_STYLE|wx.TR_LINES_AT_ROOT|wx.TR_TWIST_BUTTONS )
+        bSizer42.Add( self.treeRDS, 1, wx.ALL|wx.EXPAND, 5 )
 
-        self.m_button7 = wx.Button( self.m_panel112, wx.ID_ANY, u"Reload RDS Instances", wx.DefaultPosition, wx.DefaultSize, 0 )
-        bSizer42.Add( self.m_button7, 0, wx.ALL, 5 )
+        self.buttonReloadRDS = wx.Button( self.panelRDSTree, wx.ID_ANY, u"Reload RDS Instances", wx.DefaultPosition, wx.DefaultSize, 0 )
+        bSizer42.Add( self.buttonReloadRDS, 0, wx.ALL, 5 )
 
 
-        self.m_panel112.SetSizer( bSizer42 )
-        self.m_panel112.Layout()
-        bSizer42.Fit( self.m_panel112 )
-        self.m_panel152 = wx.Panel( self.m_splitter12, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-        self.m_splitter12.SplitVertically( self.m_panel112, self.m_panel152, 0 )
+        self.panelRDSTree.SetSizer( bSizer42 )
+        self.panelRDSTree.Layout()
+        bSizer42.Fit( self.panelRDSTree )
+        self.panelRDSDetails = wx.Panel( self.m_splitter12, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        self.m_splitter12.SplitVertically( self.panelRDSTree, self.panelRDSDetails, 0 )
         bSizer82.Add( self.m_splitter12, 1, wx.EXPAND, 5 )
 
 
@@ -176,21 +176,21 @@ class MainFrame ( wx.Frame ):
         self.m_splitter13 = wx.SplitterWindow( self.panelCloudfront, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.SP_3D )
         self.m_splitter13.Bind( wx.EVT_IDLE, self.m_splitter13OnIdle )
 
-        self.m_panel113 = wx.Panel( self.m_splitter13, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        self.panelCloudfrontTree = wx.Panel( self.m_splitter13, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
         bSizer43 = wx.BoxSizer( wx.VERTICAL )
 
-        self.m_treeCtrl13 = wx.TreeCtrl( self.m_panel113, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TR_DEFAULT_STYLE )
-        bSizer43.Add( self.m_treeCtrl13, 1, wx.ALL|wx.EXPAND, 5 )
+        self.treeCloudfront = wx.TreeCtrl( self.panelCloudfrontTree, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TR_DEFAULT_STYLE|wx.TR_LINES_AT_ROOT|wx.TR_TWIST_BUTTONS )
+        bSizer43.Add( self.treeCloudfront, 1, wx.ALL|wx.EXPAND, 5 )
 
-        self.m_button8 = wx.Button( self.m_panel113, wx.ID_ANY, u"Reload Cloudfront Distributions", wx.DefaultPosition, wx.DefaultSize, 0 )
-        bSizer43.Add( self.m_button8, 0, wx.ALL, 5 )
+        self.buttonReloadCloudfront = wx.Button( self.panelCloudfrontTree, wx.ID_ANY, u"Reload Cloudfront Distributions", wx.DefaultPosition, wx.DefaultSize, 0 )
+        bSizer43.Add( self.buttonReloadCloudfront, 0, wx.ALL, 5 )
 
 
-        self.m_panel113.SetSizer( bSizer43 )
-        self.m_panel113.Layout()
-        bSizer43.Fit( self.m_panel113 )
-        self.m_panel153 = wx.Panel( self.m_splitter13, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
-        self.m_splitter13.SplitVertically( self.m_panel113, self.m_panel153, 0 )
+        self.panelCloudfrontTree.SetSizer( bSizer43 )
+        self.panelCloudfrontTree.Layout()
+        bSizer43.Fit( self.panelCloudfrontTree )
+        self.panelCloudfrontDetails = wx.Panel( self.m_splitter13, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        self.m_splitter13.SplitVertically( self.panelCloudfrontTree, self.panelCloudfrontDetails, 0 )
         bSizer83.Add( self.m_splitter13, 1, wx.EXPAND, 5 )
 
 
@@ -208,23 +208,28 @@ class MainFrame ( wx.Frame ):
         self.Centre( wx.BOTH )
 
         # Connect Events
-        self.Bind( wx.EVT_CLOSE, self.gicClose )
-        self.Bind( wx.EVT_SHOW, self.gicShow )
+        self.Bind( wx.EVT_CLOSE, self.awsmanagerClose )
+        self.Bind( wx.EVT_SHOW, self.awsmanagerShow )
         self.Bind( wx.EVT_MENU, self.miFileClose, id = self.menuitemFileClose.GetId() )
         self.Bind( wx.EVT_MENU, self.miExtrasConfiguration, id = self.menuitemExtrasConfiguration.GetId() )
         self.Bind( wx.EVT_MENU, self.miHelpSupport, id = self.menuitemHelpSupport.GetId() )
         self.Bind( wx.EVT_MENU, self.miHelpUpdate, id = self.menuitemHelpUpdate.GetId() )
         self.Bind( wx.EVT_MENU, self.miHelpAbout, id = self.menuitemHelpAbout.GetId() )
+        self.buttonReloadEC2.Bind( wx.EVT_BUTTON, self.aws_ec2_reload )
+        self.buttonReloadLambda.Bind( wx.EVT_BUTTON, self.aws_lambda_reload )
+        self.buttonReloadS3.Bind( wx.EVT_BUTTON, self.aws_s3_reload )
+        self.buttonReloadRDS.Bind( wx.EVT_BUTTON, self.aws_rds_reload )
+        self.buttonReloadCloudfront.Bind( wx.EVT_BUTTON, self.aws_cloudfront_reload )
 
     def __del__( self ):
         pass
 
 
     # Virtual event handlers, override them in your derived class
-    def gicClose( self, event ):
+    def awsmanagerClose( self, event ):
         event.Skip()
 
-    def gicShow( self, event ):
+    def awsmanagerShow( self, event ):
         event.Skip()
 
     def miFileClose( self, event ):
@@ -240,6 +245,21 @@ class MainFrame ( wx.Frame ):
         event.Skip()
 
     def miHelpAbout( self, event ):
+        event.Skip()
+
+    def aws_ec2_reload( self, event ):
+        event.Skip()
+
+    def aws_lambda_reload( self, event ):
+        event.Skip()
+
+    def aws_s3_reload( self, event ):
+        event.Skip()
+
+    def aws_rds_reload( self, event ):
+        event.Skip()
+
+    def aws_cloudfront_reload( self, event ):
         event.Skip()
 
     def m_splitter1OnIdle( self, event ):

@@ -21,24 +21,22 @@ class DialogConfiguration(gui.dialogConfiguration):
         # get the config
         config = settings.read_config()
         # set the values
-        self.textUsername.SetValue(config['username'])
-        self.textPAT.SetValue(config['personal_access_token'])
-        self.radiobuttonGitHub.SetValue(config['use_github'])
-        self.radiobuttonGHE.SetValue(not config['use_github'])
-        self.textGHEURL.SetValue(config['ghe_url'])
-        self.checkboxUpdate.SetValue(config['update_check'])
+        self.textAwsAccessKeyId.SetValue(config['aws_access_key_id'])
+        self.textAwsSecretAccessKey.SetValue(config['aws_secret_access_key'])
+        self.textAwsSessionToken.SetValue(config['aws_session_token'])
+        self.comboBoxAwsProfile.SetValue(config['aws_profile'])
+        self.comboBoxAwsRegion.SetValue(config['region'])
 
         self.Layout()
         self.Fit()
 
     def saveConfig(self, event):
         # save the config
-        settings.save_config('username', self.textUsername.GetValue())
-        settings.save_config('personal_access_token', self.textPAT.GetValue())
-        settings.save_config('use_github', self.radiobuttonGitHub.GetValue())
-        settings.save_config('use_ghe', self.radiobuttonGHE.GetValue())
-        settings.save_config('ghe_url', self.textGHEURL.GetValue())
-        settings.save_config('update_check', self.checkboxUpdate.GetValue())
+        settings.save_config('aws_access_key_id', self.textAwsAccessKeyId.GetValue())
+        settings.save_config('aws_secret_access_key', self.textAwsSecretAccessKey.GetValue())
+        settings.save_config('aws_session_token', self.textAwsSessionToken.GetValue())
+        settings.save_config('aws_profile', self.comboBoxAwsProfile.GetValue())
+        settings.save_config('region', self.comboBoxAwsRegion.GetValue())
         # close the dialog
         self.Close()
 
