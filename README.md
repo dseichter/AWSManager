@@ -2,6 +2,14 @@
 
 Manage resources and services on AWS. See current Freeware version of AWSManager at [dseichter.de](https://www.dseichter.de/aws-manager/).
 
+## First images
+
+The first impressions of the upcoming rewritten AWS Manager:
+
+![EC2](images/ec2.png)
+
+![Cloudfront](images/cloudfront.png)
+
 ## Badges
 
 ![pep8](https://github.com/dseichter/AWSManager/actions/workflows/pep8.yml/badge.svg)
