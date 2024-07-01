@@ -10,6 +10,8 @@
 import wx
 import wx.xrc
 import wx.aui
+import wx.propgrid
+import wx.grid
 
 ID_CLOSE = 6000
 ID_CONFIGURATION = 6001
@@ -24,7 +26,7 @@ ID_ABOUT = 6004
 class MainFrame ( wx.Frame ):
 
     def __init__( self, parent ):
-        wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"AWS Manager", pos = wx.DefaultPosition, size = wx.Size( 746,409 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+        wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"AWS Manager", pos = wx.DefaultPosition, size = wx.Size( 1066,633 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
         self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
 
@@ -78,6 +80,155 @@ class MainFrame ( wx.Frame ):
         self.panelEC2Tree.Layout()
         bSizer4.Fit( self.panelEC2Tree )
         self.panelEC2Details = wx.Panel( self.m_splitter1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        bSizer13 = wx.BoxSizer( wx.VERTICAL )
+
+        fgSizerEC2Details = wx.FlexGridSizer( 0, 3, 0, 0 )
+        fgSizerEC2Details.AddGrowableCol( 1 )
+        fgSizerEC2Details.SetFlexibleDirection( wx.BOTH )
+        fgSizerEC2Details.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+
+        self.staticTextEC2_SelectedInstance = wx.StaticText( self.panelEC2Details, wx.ID_ANY, u"Selected Instance", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextEC2_SelectedInstance.Wrap( -1 )
+
+        fgSizerEC2Details.Add( self.staticTextEC2_SelectedInstance, 0, wx.ALL, 5 )
+
+        self.textCtrlEC2_InstanceId = wx.TextCtrl( self.panelEC2Details, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerEC2Details.Add( self.textCtrlEC2_InstanceId, 1, wx.ALL|wx.EXPAND, 5 )
+
+        self.buttonEC2_RefreshInstance = wx.Button( self.panelEC2Details, wx.ID_ANY, u"Refresh", wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerEC2Details.Add( self.buttonEC2_RefreshInstance, 0, wx.ALL, 5 )
+
+        self.staticTextEC2_ImageId = wx.StaticText( self.panelEC2Details, wx.ID_ANY, u"ImageId", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextEC2_ImageId.Wrap( -1 )
+
+        fgSizerEC2Details.Add( self.staticTextEC2_ImageId, 0, wx.ALL, 5 )
+
+        self.textCtrlEC2_ImageId = wx.TextCtrl( self.panelEC2Details, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerEC2Details.Add( self.textCtrlEC2_ImageId, 1, wx.ALL|wx.EXPAND, 5 )
+
+        self.buttonEC2_OpenMgmtConsole = wx.Button( self.panelEC2Details, wx.ID_ANY, u"Open in AWS", wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerEC2Details.Add( self.buttonEC2_OpenMgmtConsole, 0, wx.ALL, 5 )
+
+        self.staticTextEC2_InstanceType = wx.StaticText( self.panelEC2Details, wx.ID_ANY, u"InstanceType", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextEC2_InstanceType.Wrap( -1 )
+
+        fgSizerEC2Details.Add( self.staticTextEC2_InstanceType, 0, wx.ALL, 5 )
+
+        self.textCtrlEC2_InstanceType = wx.TextCtrl( self.panelEC2Details, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerEC2Details.Add( self.textCtrlEC2_InstanceType, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizerEC2Details.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+        self.staticTextEC2_State = wx.StaticText( self.panelEC2Details, wx.ID_ANY, u"State", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextEC2_State.Wrap( -1 )
+
+        fgSizerEC2Details.Add( self.staticTextEC2_State, 0, wx.ALL, 5 )
+
+        self.textCtrlEC2_State = wx.TextCtrl( self.panelEC2Details, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerEC2Details.Add( self.textCtrlEC2_State, 1, wx.ALL|wx.EXPAND, 5 )
+
+        self.buttonEC2_ChangeState = wx.Button( self.panelEC2Details, wx.ID_ANY, u"Change State", wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerEC2Details.Add( self.buttonEC2_ChangeState, 0, wx.ALL, 5 )
+
+        self.staticTextEC2_LaunchTime = wx.StaticText( self.panelEC2Details, wx.ID_ANY, u"LaunchTime", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextEC2_LaunchTime.Wrap( -1 )
+
+        fgSizerEC2Details.Add( self.staticTextEC2_LaunchTime, 0, wx.ALL, 5 )
+
+        self.textCtrlEC2_LaunchTime = wx.TextCtrl( self.panelEC2Details, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerEC2Details.Add( self.textCtrlEC2_LaunchTime, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizerEC2Details.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+        self.staticTextEC2_PrivateIpAddress = wx.StaticText( self.panelEC2Details, wx.ID_ANY, u"PrivateIpAddress", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextEC2_PrivateIpAddress.Wrap( -1 )
+
+        fgSizerEC2Details.Add( self.staticTextEC2_PrivateIpAddress, 0, wx.ALL, 5 )
+
+        self.textCtrlEC2_PrivateIpAddress = wx.TextCtrl( self.panelEC2Details, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerEC2Details.Add( self.textCtrlEC2_PrivateIpAddress, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizerEC2Details.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+        self.staticTextEC2_PublicIpAddress = wx.StaticText( self.panelEC2Details, wx.ID_ANY, u"PublicIpAddress", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextEC2_PublicIpAddress.Wrap( -1 )
+
+        fgSizerEC2Details.Add( self.staticTextEC2_PublicIpAddress, 0, wx.ALL, 5 )
+
+        self.textCtrlEC2_PublicIpAddress = wx.TextCtrl( self.panelEC2Details, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerEC2Details.Add( self.textCtrlEC2_PublicIpAddress, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizerEC2Details.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+        self.staticTextEC2_Architecture = wx.StaticText( self.panelEC2Details, wx.ID_ANY, u"Architecture", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextEC2_Architecture.Wrap( -1 )
+
+        fgSizerEC2Details.Add( self.staticTextEC2_Architecture, 0, wx.ALL, 5 )
+
+        self.textCtrlEC2_Architecture = wx.TextCtrl( self.panelEC2Details, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerEC2Details.Add( self.textCtrlEC2_Architecture, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizerEC2Details.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+        self.staticTextEC2_Tags = wx.StaticText( self.panelEC2Details, wx.ID_ANY, u"Tags", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextEC2_Tags.Wrap( -1 )
+
+        fgSizerEC2Details.Add( self.staticTextEC2_Tags, 0, wx.ALL, 5 )
+
+        self.propertyGridEC2_tags = wx.propgrid.PropertyGrid(self.panelEC2Details, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.propgrid.PG_DEFAULT_STYLE)
+        fgSizerEC2Details.Add( self.propertyGridEC2_tags, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizerEC2Details.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+
+        bSizer13.Add( fgSizerEC2Details, 1, wx.EXPAND, 5 )
+
+        fgSizerEC2Volumes = wx.FlexGridSizer( 0, 1, 0, 0 )
+        fgSizerEC2Volumes.SetFlexibleDirection( wx.BOTH )
+        fgSizerEC2Volumes.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+
+        self.staticTextEC2_Volumes = wx.StaticText( self.panelEC2Details, wx.ID_ANY, u"Volumes", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextEC2_Volumes.Wrap( -1 )
+
+        fgSizerEC2Volumes.Add( self.staticTextEC2_Volumes, 0, wx.ALL, 5 )
+
+        self.gridEC2_Volumes = wx.grid.Grid( self.panelEC2Details, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
+
+        # Grid
+        self.gridEC2_Volumes.CreateGrid( 5, 5 )
+        self.gridEC2_Volumes.EnableEditing( True )
+        self.gridEC2_Volumes.EnableGridLines( True )
+        self.gridEC2_Volumes.EnableDragGridSize( False )
+        self.gridEC2_Volumes.SetMargins( 0, 0 )
+
+        # Columns
+        self.gridEC2_Volumes.EnableDragColMove( False )
+        self.gridEC2_Volumes.EnableDragColSize( True )
+        self.gridEC2_Volumes.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+
+        # Rows
+        self.gridEC2_Volumes.EnableDragRowSize( True )
+        self.gridEC2_Volumes.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+
+        # Label Appearance
+
+        # Cell Defaults
+        self.gridEC2_Volumes.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
+        fgSizerEC2Volumes.Add( self.gridEC2_Volumes, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        bSizer13.Add( fgSizerEC2Volumes, 1, wx.EXPAND, 5 )
+
+
+        self.panelEC2Details.SetSizer( bSizer13 )
+        self.panelEC2Details.Layout()
+        bSizer13.Fit( self.panelEC2Details )
         self.m_splitter1.SplitVertically( self.panelEC2Tree, self.panelEC2Details, 0 )
         bSizer8.Add( self.m_splitter1, 1, wx.EXPAND, 5 )
 
@@ -215,7 +366,11 @@ class MainFrame ( wx.Frame ):
         self.Bind( wx.EVT_MENU, self.miHelpSupport, id = self.menuitemHelpSupport.GetId() )
         self.Bind( wx.EVT_MENU, self.miHelpUpdate, id = self.menuitemHelpUpdate.GetId() )
         self.Bind( wx.EVT_MENU, self.miHelpAbout, id = self.menuitemHelpAbout.GetId() )
+        self.treeEC2.Bind( wx.EVT_TREE_ITEM_ACTIVATED, self.aws_ec2_load_details )
         self.buttonReloadEC2.Bind( wx.EVT_BUTTON, self.aws_ec2_reload )
+        self.buttonEC2_RefreshInstance.Bind( wx.EVT_BUTTON, self.aws_ec2_refresh_instance )
+        self.buttonEC2_OpenMgmtConsole.Bind( wx.EVT_BUTTON, self.aws_ec2_open_mgmt_console )
+        self.buttonEC2_ChangeState.Bind( wx.EVT_BUTTON, self.aws_ec2_change_state )
         self.buttonReloadLambda.Bind( wx.EVT_BUTTON, self.aws_lambda_reload )
         self.buttonReloadS3.Bind( wx.EVT_BUTTON, self.aws_s3_reload )
         self.buttonReloadRDS.Bind( wx.EVT_BUTTON, self.aws_rds_reload )
@@ -247,7 +402,19 @@ class MainFrame ( wx.Frame ):
     def miHelpAbout( self, event ):
         event.Skip()
 
+    def aws_ec2_load_details( self, event ):
+        event.Skip()
+
     def aws_ec2_reload( self, event ):
+        event.Skip()
+
+    def aws_ec2_refresh_instance( self, event ):
+        event.Skip()
+
+    def aws_ec2_open_mgmt_console( self, event ):
+        event.Skip()
+
+    def aws_ec2_change_state( self, event ):
         event.Skip()
 
     def aws_lambda_reload( self, event ):

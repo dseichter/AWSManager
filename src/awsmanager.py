@@ -77,8 +77,20 @@ class AWSManagerFrame(gui.MainFrame):
         dlg.ShowModal()
         dlg.Destroy()
 
+    def aws_ec2_load_details(self, event):
+        ui_aws_ec2.aws_ec2_load_details(self, event)
+
     def aws_ec2_reload(self, event):
         ui_aws_ec2.aws_ec2_reload(self, event)
+
+    def aws_ec2_refresh_instance(self, event):
+        ui_aws_ec2.aws_ec2_refresh_instance(self, event)
+
+    def aws_ec2_open_mgmt_console(self, event):
+        ui_aws_ec2.aws_ec2_open_mgmt_console(self, event)
+
+    def aws_ec2_change_state(self, event):
+        ui_aws_ec2.aws_ec2_change_state(self, event)
 
     def aws_lambda_reload(self, event):
         ui_aws_lambda.aws_lambda_reload(self, event)
