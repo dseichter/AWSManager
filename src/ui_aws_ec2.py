@@ -72,7 +72,7 @@ def aws_ec2_load_details(self, event):
         self.propertyGridEC2_tags.Clear()
         # add the tags to the property grid
         for tag in ec2_instance['Tags']:
-            self.propertyGridEC2_tags.Append(wx.propgrid.StringProperty(tag['Key'], tag['Value']))
+            self.propertyGridEC2_tags.Append(wx.propgrid.StringProperty(tag['Key'], tag['Key'], tag['Value']))
         self.propertyGridEC2_tags.Refresh()
         # get volume information and add it to the grid
         self.gridEC2_Volumes.ClearGrid()
