@@ -92,8 +92,20 @@ class AWSManagerFrame(gui.MainFrame):
     def aws_ec2_change_state(self, event):
         ui_aws_ec2.aws_ec2_change_state(self, event)
 
+    def aws_lambda_load_details(self, event):
+        ui_aws_lambda.aws_lambda_load_details(self, event)
+
     def aws_lambda_reload(self, event):
         ui_aws_lambda.aws_lambda_reload(self, event)
+
+    def aws_lambda_refresh_function(self, event):
+        ui_aws_lambda.aws_lambda_refresh_function(self, event)
+
+    def aws_lambda_invoke(self, event):
+        ui_aws_lambda.aws_lambda_invoke(self, event)
+
+    def aws_lambda_open_mgmt_console(self, event):
+        ui_aws_lambda.aws_lambda_open_mgmt_console(self, event)
 
     def aws_s3_reload(self, event):
         ui_aws_s3.aws_s3_reload(self, event)
