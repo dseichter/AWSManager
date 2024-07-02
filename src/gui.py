@@ -238,7 +238,7 @@ class MainFrame ( wx.Frame ):
         self.panelEC2.SetSizer( bSizer8 )
         self.panelEC2.Layout()
         bSizer8.Fit( self.panelEC2 )
-        self.m_auinotebook1.AddPage( self.panelEC2, u"EC2", True, wx.NullBitmap )
+        self.m_auinotebook1.AddPage( self.panelEC2, u"EC2", False, wx.NullBitmap )
         self.panelLambda = wx.Panel( self.m_auinotebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
         bSizer3 = wx.BoxSizer( wx.VERTICAL )
 
@@ -259,6 +259,141 @@ class MainFrame ( wx.Frame ):
         self.panelLambdaTree.Layout()
         bSizer7.Fit( self.panelLambdaTree )
         self.panelLambdaDetails = wx.Panel( self.m_splitter3, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        bSizer131 = wx.BoxSizer( wx.VERTICAL )
+
+        fgSizerLambdaDetails = wx.FlexGridSizer( 0, 3, 0, 0 )
+        fgSizerLambdaDetails.AddGrowableCol( 1 )
+        fgSizerLambdaDetails.SetFlexibleDirection( wx.BOTH )
+        fgSizerLambdaDetails.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+
+        self.staticTextELambda_FunctionName = wx.StaticText( self.panelLambdaDetails, wx.ID_ANY, u"FunctionName", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextELambda_FunctionName.Wrap( -1 )
+
+        fgSizerLambdaDetails.Add( self.staticTextELambda_FunctionName, 0, wx.ALL, 5 )
+
+        self.textCtrlLambda_FunctionName = wx.TextCtrl( self.panelLambdaDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerLambdaDetails.Add( self.textCtrlLambda_FunctionName, 1, wx.ALL|wx.EXPAND, 5 )
+
+        self.buttonLambda_RefreshFunction = wx.Button( self.panelLambdaDetails, wx.ID_ANY, u"Refresh", wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerLambdaDetails.Add( self.buttonLambda_RefreshFunction, 0, wx.ALL, 5 )
+
+        self.staticTextELambda_FunctionArn = wx.StaticText( self.panelLambdaDetails, wx.ID_ANY, u"FunctionArn", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextELambda_FunctionArn.Wrap( -1 )
+
+        fgSizerLambdaDetails.Add( self.staticTextELambda_FunctionArn, 0, wx.ALL, 5 )
+
+        self.textCtrlLambda_FunctionArn = wx.TextCtrl( self.panelLambdaDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerLambdaDetails.Add( self.textCtrlLambda_FunctionArn, 1, wx.ALL|wx.EXPAND, 5 )
+
+        self.buttonLambda_OpenMgmtConsole = wx.Button( self.panelLambdaDetails, wx.ID_ANY, u"Open in AWS", wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerLambdaDetails.Add( self.buttonLambda_OpenMgmtConsole, 0, wx.ALL, 5 )
+
+        self.staticTextLambda_Version = wx.StaticText( self.panelLambdaDetails, wx.ID_ANY, u"Version", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextLambda_Version.Wrap( -1 )
+
+        fgSizerLambdaDetails.Add( self.staticTextLambda_Version, 0, wx.ALL, 5 )
+
+        self.textCtrlLambda_Version = wx.TextCtrl( self.panelLambdaDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerLambdaDetails.Add( self.textCtrlLambda_Version, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizerLambdaDetails.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+        self.staticTextLambda_MemorySize = wx.StaticText( self.panelLambdaDetails, wx.ID_ANY, u"MemorySize", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextLambda_MemorySize.Wrap( -1 )
+
+        fgSizerLambdaDetails.Add( self.staticTextLambda_MemorySize, 0, wx.ALL, 5 )
+
+        self.textCtrlLambda_MemorySize = wx.TextCtrl( self.panelLambdaDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerLambdaDetails.Add( self.textCtrlLambda_MemorySize, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizerLambdaDetails.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+        self.staticTextLambda_Handler = wx.StaticText( self.panelLambdaDetails, wx.ID_ANY, u"Handler", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextLambda_Handler.Wrap( -1 )
+
+        fgSizerLambdaDetails.Add( self.staticTextLambda_Handler, 0, wx.ALL, 5 )
+
+        self.textCtrlLambda_Handler = wx.TextCtrl( self.panelLambdaDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerLambdaDetails.Add( self.textCtrlLambda_Handler, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizerLambdaDetails.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+        self.staticTextLambda_Timeout = wx.StaticText( self.panelLambdaDetails, wx.ID_ANY, u"Timeout", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextLambda_Timeout.Wrap( -1 )
+
+        fgSizerLambdaDetails.Add( self.staticTextLambda_Timeout, 0, wx.ALL, 5 )
+
+        self.textCtrlLambda_Timeout = wx.TextCtrl( self.panelLambdaDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerLambdaDetails.Add( self.textCtrlLambda_Timeout, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizerLambdaDetails.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+        self.staticTextLambda_Runtime = wx.StaticText( self.panelLambdaDetails, wx.ID_ANY, u"Runtime", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextLambda_Runtime.Wrap( -1 )
+
+        fgSizerLambdaDetails.Add( self.staticTextLambda_Runtime, 0, wx.ALL, 5 )
+
+        self.textCtrlLambda_Runtime = wx.TextCtrl( self.panelLambdaDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerLambdaDetails.Add( self.textCtrlLambda_Runtime, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizerLambdaDetails.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+        self.staticTextLambda_LastModified = wx.StaticText( self.panelLambdaDetails, wx.ID_ANY, u"LastModified", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextLambda_LastModified.Wrap( -1 )
+
+        fgSizerLambdaDetails.Add( self.staticTextLambda_LastModified, 0, wx.ALL, 5 )
+
+        self.textCtrlLambda_LastModified = wx.TextCtrl( self.panelLambdaDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerLambdaDetails.Add( self.textCtrlLambda_LastModified, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizerLambdaDetails.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+        self.staticTextLambda_Description = wx.StaticText( self.panelLambdaDetails, wx.ID_ANY, u"Description", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextLambda_Description.Wrap( -1 )
+
+        fgSizerLambdaDetails.Add( self.staticTextLambda_Description, 0, wx.ALL, 5 )
+
+        self.textCtrlLambda_Description = wx.TextCtrl( self.panelLambdaDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerLambdaDetails.Add( self.textCtrlLambda_Description, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizerLambdaDetails.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+        self.staticTextLambda_EnvVar = wx.StaticText( self.panelLambdaDetails, wx.ID_ANY, u"Environment Variables", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextLambda_EnvVar.Wrap( -1 )
+
+        fgSizerLambdaDetails.Add( self.staticTextLambda_EnvVar, 0, wx.ALL, 5 )
+
+        self.propertyGridLambda_EnvVar = wx.propgrid.PropertyGrid(self.panelLambdaDetails, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.propgrid.PG_AUTO_SORT|wx.propgrid.PG_DEFAULT_STYLE|wx.propgrid.PG_LIMITED_EDITING)
+        fgSizerLambdaDetails.Add( self.propertyGridLambda_EnvVar, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizerLambdaDetails.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+        self.staticTextLambda_Tags = wx.StaticText( self.panelLambdaDetails, wx.ID_ANY, u"Tags", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextLambda_Tags.Wrap( -1 )
+
+        fgSizerLambdaDetails.Add( self.staticTextLambda_Tags, 0, wx.ALL, 5 )
+
+        self.propertyGridLambda_Tags = wx.propgrid.PropertyGrid(self.panelLambdaDetails, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.propgrid.PG_AUTO_SORT|wx.propgrid.PG_DEFAULT_STYLE|wx.propgrid.PG_LIMITED_EDITING)
+        fgSizerLambdaDetails.Add( self.propertyGridLambda_Tags, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizerLambdaDetails.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+
+        bSizer131.Add( fgSizerLambdaDetails, 1, wx.EXPAND, 5 )
+
+
+        self.panelLambdaDetails.SetSizer( bSizer131 )
+        self.panelLambdaDetails.Layout()
+        bSizer131.Fit( self.panelLambdaDetails )
         self.m_splitter3.SplitVertically( self.panelLambdaTree, self.panelLambdaDetails, 0 )
         bSizer3.Add( self.m_splitter3, 1, wx.EXPAND, 5 )
 
@@ -266,7 +401,7 @@ class MainFrame ( wx.Frame ):
         self.panelLambda.SetSizer( bSizer3 )
         self.panelLambda.Layout()
         bSizer3.Fit( self.panelLambda )
-        self.m_auinotebook1.AddPage( self.panelLambda, u"Lambda", False, wx.NullBitmap )
+        self.m_auinotebook1.AddPage( self.panelLambda, u"Lambda", True, wx.NullBitmap )
         self.panelS3 = wx.Panel( self.m_auinotebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
         bSizer81 = wx.BoxSizer( wx.VERTICAL )
 
@@ -373,7 +508,10 @@ class MainFrame ( wx.Frame ):
         self.buttonEC2_RefreshInstance.Bind( wx.EVT_BUTTON, self.aws_ec2_refresh_instance )
         self.buttonEC2_OpenMgmtConsole.Bind( wx.EVT_BUTTON, self.aws_ec2_open_mgmt_console )
         self.buttonEC2_ChangeState.Bind( wx.EVT_BUTTON, self.aws_ec2_change_state )
+        self.treeLambda.Bind( wx.EVT_TREE_ITEM_ACTIVATED, self.aws_lambda_load_details )
         self.buttonReloadLambda.Bind( wx.EVT_BUTTON, self.aws_lambda_reload )
+        self.buttonLambda_RefreshFunction.Bind( wx.EVT_BUTTON, self.aws_lambda_refresh_function )
+        self.buttonLambda_OpenMgmtConsole.Bind( wx.EVT_BUTTON, self.aws_lambda_open_mgmt_console )
         self.buttonReloadS3.Bind( wx.EVT_BUTTON, self.aws_s3_reload )
         self.buttonReloadRDS.Bind( wx.EVT_BUTTON, self.aws_rds_reload )
         self.buttonReloadCloudfront.Bind( wx.EVT_BUTTON, self.aws_cloudfront_reload )
@@ -419,7 +557,16 @@ class MainFrame ( wx.Frame ):
     def aws_ec2_change_state( self, event ):
         event.Skip()
 
+    def aws_lambda_load_details( self, event ):
+        event.Skip()
+
     def aws_lambda_reload( self, event ):
+        event.Skip()
+
+    def aws_lambda_refresh_function( self, event ):
+        event.Skip()
+
+    def aws_lambda_open_mgmt_console( self, event ):
         event.Skip()
 
     def aws_s3_reload( self, event ):
