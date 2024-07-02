@@ -77,10 +77,10 @@ def aws_ec2_load_details(self, event):
         # get volume information and add it to the grid
         self.gridEC2_Volumes.ClearGrid()
         volumes = ec2_instance['BlockDeviceMappings']
+        self.gridEC2_Volumes.DeleteRows(0, self.gridEC2_Volumes.GetNumberRows())
         self.gridEC2_Volumes.AppendRows(len(volumes))
         self.gridEC2_Volumes.SetColLabelSize(18)
         # add six columns to the grid
-        self.gridEC2_Volumes.AppendCols(6)
         self.gridEC2_Volumes.SetColLabelValue(0, 'Volume ID')
         self.gridEC2_Volumes.SetColLabelValue(1, 'Device')
         self.gridEC2_Volumes.SetColLabelValue(2, 'Type')
