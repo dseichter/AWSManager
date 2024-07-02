@@ -5,6 +5,7 @@ import aws_lambda
 import settings
 import iconsaws
 import webbrowser
+import json
 
 
 def aws_lambda_reload(self, event):
@@ -68,3 +69,26 @@ def aws_lambda_refresh_function(self, event):
 
 def aws_lambda_open_mgmt_console(self, event):
     webbrowser.open_new_tab('https://' + settings.read_config()['region'] + '.console.aws.amazon.com/lambda/home?region=' + settings.read_config()['region'] + '#/functions/' + self.textCtrlLambda_FunctionName.GetValue())
+
+
+def aws_lambda_invoke(self, event):
+    # get the function name
+    function_name = self.textCtrlLambda_FunctionName.GetValue()
+
+    # create a small dialog to ask the user for the payload
+    dlg = wx.TextEntryDialog(self, 'Enter the payload for the function:', 'Invoke Lambda Function', '', style=wx.TextEntryDialogStyle | wx.TE_MULTILINE)
+    dlg.SetSize((400, 300))
+    dlg.SetMinSize((400, 300))
+    # find the OK button
+    ok_button = dlg.FindWindowById(wx.ID_OK)
+    # change the text of the OK button
+    ok_button.SetLabel('Invoke')
+    if dlg.ShowModal() == wx.ID_OK:
+        payload = json.dumps(dlg.GetValue())
+        # invoke the function
+        response = aws_lambda.invoke_lambda_function(settings.read_config()['region'], function_name, payload)
+        # show the response in a new dialog
+        dlg_response = wx.TextEntryDialog(self, 'Enter the payload for the function:', 'Response of Invocation', response, style=wx.TextEntryDialogStyle | wx.TE_MULTILINE | wx.TE_DONTWRAP)
+        dlg_response.ShowModal()
+        dlg_response.Destroy()
+    dlg.Destroy()

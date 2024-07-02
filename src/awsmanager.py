@@ -101,6 +101,9 @@ class AWSManagerFrame(gui.MainFrame):
     def aws_lambda_refresh_function(self, event):
         ui_aws_lambda.aws_lambda_refresh_function(self, event)
 
+    def aws_lambda_invoke(self, event):
+        ui_aws_lambda.aws_lambda_invoke(self, event)
+
     def aws_lambda_open_mgmt_console(self, event):
         ui_aws_lambda.aws_lambda_open_mgmt_console(self, event)
 

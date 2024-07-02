@@ -296,8 +296,8 @@ class MainFrame ( wx.Frame ):
         self.textCtrlLambda_Version = wx.TextCtrl( self.panelLambdaDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
         fgSizerLambdaDetails.Add( self.textCtrlLambda_Version, 1, wx.ALL|wx.EXPAND, 5 )
 
-
-        fgSizerLambdaDetails.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+        self.buttonLambda_Invoke = wx.Button( self.panelLambdaDetails, wx.ID_ANY, u"Invoke", wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerLambdaDetails.Add( self.buttonLambda_Invoke, 0, wx.ALL, 5 )
 
         self.staticTextLambda_MemorySize = wx.StaticText( self.panelLambdaDetails, wx.ID_ANY, u"MemorySize", wx.DefaultPosition, wx.DefaultSize, 0 )
         self.staticTextLambda_MemorySize.Wrap( -1 )
@@ -512,6 +512,7 @@ class MainFrame ( wx.Frame ):
         self.buttonReloadLambda.Bind( wx.EVT_BUTTON, self.aws_lambda_reload )
         self.buttonLambda_RefreshFunction.Bind( wx.EVT_BUTTON, self.aws_lambda_refresh_function )
         self.buttonLambda_OpenMgmtConsole.Bind( wx.EVT_BUTTON, self.aws_lambda_open_mgmt_console )
+        self.buttonLambda_Invoke.Bind( wx.EVT_BUTTON, self.aws_lambda_invoke )
         self.buttonReloadS3.Bind( wx.EVT_BUTTON, self.aws_s3_reload )
         self.buttonReloadRDS.Bind( wx.EVT_BUTTON, self.aws_rds_reload )
         self.buttonReloadCloudfront.Bind( wx.EVT_BUTTON, self.aws_cloudfront_reload )
@@ -567,6 +568,9 @@ class MainFrame ( wx.Frame ):
         event.Skip()
 
     def aws_lambda_open_mgmt_console( self, event ):
+        event.Skip()
+
+    def aws_lambda_invoke( self, event ):
         event.Skip()
 
     def aws_s3_reload( self, event ):

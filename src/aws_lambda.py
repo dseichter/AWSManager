@@ -1,4 +1,5 @@
 import boto3
+import json
 
 
 # get all lambda functions of a region and return a list of functions
@@ -22,4 +23,4 @@ def get_lambda_function(region, function_name):
 def invoke_lambda_function(region, function_name, payload):
     lambda_client = boto3.client('lambda', region_name=region)
     response = lambda_client.invoke(FunctionName=function_name, Payload=payload)
-    return response
+    return json.dumps(response, indent=2, default=str)
