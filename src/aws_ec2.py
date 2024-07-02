@@ -24,3 +24,27 @@ def get_ec2_instances(region):
         for instance in reservation['Instances']:
             instances_list.append(instance)
     return instances_list
+
+
+# start a given instance
+def start_ec2_instance(region, instance_id):
+    ec2 = boto3.client('ec2', region_name=region)
+    ec2.start_instances(InstanceIds=[instance_id])
+
+
+# stop a given instance
+def stop_ec2_instance(region, instance_id):
+    ec2 = boto3.client('ec2', region_name=region)
+    ec2.stop_instances(InstanceIds=[instance_id])
+
+
+# reboot a given instance
+def reboot_ec2_instance(region, instance_id):
+    ec2 = boto3.client('ec2', region_name=region)
+    ec2.reboot_instances(InstanceIds=[instance_id])
+
+
+# terminate a given instance
+def terminate_ec2_instance(region, instance_id):
+    ec2 = boto3.client('ec2', region_name=region)
+    ec2.terminate_instances(InstanceIds=[instance_id])

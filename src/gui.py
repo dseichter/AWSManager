@@ -180,7 +180,7 @@ class MainFrame ( wx.Frame ):
 
         fgSizerEC2Details.Add( self.staticTextEC2_Tags, 0, wx.ALL, 5 )
 
-        self.propertyGridEC2_tags = wx.propgrid.PropertyGrid(self.panelEC2Details, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.propgrid.PG_DEFAULT_STYLE)
+        self.propertyGridEC2_tags = wx.propgrid.PropertyGrid(self.panelEC2Details, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.propgrid.PG_AUTO_SORT|wx.propgrid.PG_DEFAULT_STYLE|wx.propgrid.PG_LIMITED_EDITING)
         fgSizerEC2Details.Add( self.propertyGridEC2_tags, 1, wx.ALL|wx.EXPAND, 5 )
 
 
@@ -190,6 +190,8 @@ class MainFrame ( wx.Frame ):
         bSizer13.Add( fgSizerEC2Details, 1, wx.EXPAND, 5 )
 
         fgSizerEC2Volumes = wx.FlexGridSizer( 0, 1, 0, 0 )
+        fgSizerEC2Volumes.AddGrowableCol( 0 )
+        fgSizerEC2Volumes.AddGrowableRow( 1 )
         fgSizerEC2Volumes.SetFlexibleDirection( wx.BOTH )
         fgSizerEC2Volumes.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
 
@@ -201,8 +203,8 @@ class MainFrame ( wx.Frame ):
         self.gridEC2_Volumes = wx.grid.Grid( self.panelEC2Details, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
 
         # Grid
-        self.gridEC2_Volumes.CreateGrid( 5, 5 )
-        self.gridEC2_Volumes.EnableEditing( True )
+        self.gridEC2_Volumes.CreateGrid( 2, 6 )
+        self.gridEC2_Volumes.EnableEditing( False )
         self.gridEC2_Volumes.EnableGridLines( True )
         self.gridEC2_Volumes.EnableDragGridSize( False )
         self.gridEC2_Volumes.SetMargins( 0, 0 )
