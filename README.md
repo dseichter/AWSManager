@@ -8,7 +8,9 @@ The first impressions of the upcoming rewritten AWS Manager:
 
 ![EC2](images/ec2.png)
 
-![Cloudfront](images/lambda.png)
+![Lambda](images/lambda.png)
+
+![Cloudfront](images/cloudfront.png)
 
 ## Badges
 
