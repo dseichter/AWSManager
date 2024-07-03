@@ -180,8 +180,8 @@ class MainFrame ( wx.Frame ):
 
         fgSizerEC2Details.Add( self.staticTextEC2_Tags, 0, wx.ALL, 5 )
 
-        self.propertyGridEC2_tags = wx.propgrid.PropertyGrid(self.panelEC2Details, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.propgrid.PG_AUTO_SORT|wx.propgrid.PG_DEFAULT_STYLE|wx.propgrid.PG_LIMITED_EDITING)
-        fgSizerEC2Details.Add( self.propertyGridEC2_tags, 1, wx.ALL|wx.EXPAND, 5 )
+        self.propertyGridEC2_Tags = wx.propgrid.PropertyGrid(self.panelEC2Details, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.propgrid.PG_AUTO_SORT|wx.propgrid.PG_DEFAULT_STYLE|wx.propgrid.PG_LIMITED_EDITING)
+        fgSizerEC2Details.Add( self.propertyGridEC2_Tags, 1, wx.ALL|wx.EXPAND, 5 )
 
 
         fgSizerEC2Details.Add( ( 0, 0), 1, wx.EXPAND, 5 )
@@ -401,7 +401,7 @@ class MainFrame ( wx.Frame ):
         self.panelLambda.SetSizer( bSizer3 )
         self.panelLambda.Layout()
         bSizer3.Fit( self.panelLambda )
-        self.m_auinotebook1.AddPage( self.panelLambda, u"Lambda", True, wx.NullBitmap )
+        self.m_auinotebook1.AddPage( self.panelLambda, u"Lambda", False, wx.NullBitmap )
         self.panelS3 = wx.Panel( self.m_auinotebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
         bSizer81 = wx.BoxSizer( wx.VERTICAL )
 
@@ -478,6 +478,97 @@ class MainFrame ( wx.Frame ):
         self.panelCloudfrontTree.Layout()
         bSizer43.Fit( self.panelCloudfrontTree )
         self.panelCloudfrontDetails = wx.Panel( self.m_splitter13, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        bSizer132 = wx.BoxSizer( wx.VERTICAL )
+
+        fgSizerCloudfrontDetails = wx.FlexGridSizer( 0, 3, 0, 0 )
+        fgSizerCloudfrontDetails.AddGrowableCol( 1 )
+        fgSizerCloudfrontDetails.SetFlexibleDirection( wx.BOTH )
+        fgSizerCloudfrontDetails.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+
+        self.staticTextCloudfront_Id = wx.StaticText( self.panelCloudfrontDetails, wx.ID_ANY, u"ID", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextCloudfront_Id.Wrap( -1 )
+
+        fgSizerCloudfrontDetails.Add( self.staticTextCloudfront_Id, 0, wx.ALL, 5 )
+
+        self.textCtrlCloudfront_Id = wx.TextCtrl( self.panelCloudfrontDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerCloudfrontDetails.Add( self.textCtrlCloudfront_Id, 1, wx.ALL|wx.EXPAND, 5 )
+
+        self.buttonCloudfront_RefreshDistribution = wx.Button( self.panelCloudfrontDetails, wx.ID_ANY, u"Refresh", wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerCloudfrontDetails.Add( self.buttonCloudfront_RefreshDistribution, 0, wx.ALL, 5 )
+
+        self.staticTextCloudfront_Status = wx.StaticText( self.panelCloudfrontDetails, wx.ID_ANY, u"Status", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextCloudfront_Status.Wrap( -1 )
+
+        fgSizerCloudfrontDetails.Add( self.staticTextCloudfront_Status, 0, wx.ALL, 5 )
+
+        self.textCtrlCloudfront_Status = wx.TextCtrl( self.panelCloudfrontDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerCloudfrontDetails.Add( self.textCtrlCloudfront_Status, 1, wx.ALL|wx.EXPAND, 5 )
+
+        self.buttonCloudfront_OpenMgmtConsole = wx.Button( self.panelCloudfrontDetails, wx.ID_ANY, u"Open in AWS", wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerCloudfrontDetails.Add( self.buttonCloudfront_OpenMgmtConsole, 0, wx.ALL, 5 )
+
+        self.staticTextCloudfront_Description = wx.StaticText( self.panelCloudfrontDetails, wx.ID_ANY, u"Description", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextCloudfront_Description.Wrap( -1 )
+
+        fgSizerCloudfrontDetails.Add( self.staticTextCloudfront_Description, 0, wx.ALL, 5 )
+
+        self.textCtrlCloudfront_Description = wx.TextCtrl( self.panelCloudfrontDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerCloudfrontDetails.Add( self.textCtrlCloudfront_Description, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizerCloudfrontDetails.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+        self.staticTextECloudfront_DomainName = wx.StaticText( self.panelCloudfrontDetails, wx.ID_ANY, u"DomainName", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextECloudfront_DomainName.Wrap( -1 )
+
+        fgSizerCloudfrontDetails.Add( self.staticTextECloudfront_DomainName, 0, wx.ALL, 5 )
+
+        self.textCtrlCloudfront_DomainName = wx.TextCtrl( self.panelCloudfrontDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerCloudfrontDetails.Add( self.textCtrlCloudfront_DomainName, 1, wx.ALL|wx.EXPAND, 5 )
+
+        self.buttonCloudfront_InvalidateCache = wx.Button( self.panelCloudfrontDetails, wx.ID_ANY, u"Invalidate", wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerCloudfrontDetails.Add( self.buttonCloudfront_InvalidateCache, 0, wx.ALL, 5 )
+
+        self.staticText_AltDomainName = wx.StaticText( self.panelCloudfrontDetails, wx.ID_ANY, u"Alternative Domains", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticText_AltDomainName.Wrap( -1 )
+
+        fgSizerCloudfrontDetails.Add( self.staticText_AltDomainName, 0, wx.ALL, 5 )
+
+        self.textCtrlCloudfront_AltDomainName = wx.TextCtrl( self.panelCloudfrontDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerCloudfrontDetails.Add( self.textCtrlCloudfront_AltDomainName, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizerCloudfrontDetails.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+        self.staticTextCloudfront_Origins = wx.StaticText( self.panelCloudfrontDetails, wx.ID_ANY, u"Origins", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextCloudfront_Origins.Wrap( -1 )
+
+        fgSizerCloudfrontDetails.Add( self.staticTextCloudfront_Origins, 0, wx.ALL, 5 )
+
+        self.textCtrlCloudfront_Origins = wx.TextCtrl( self.panelCloudfrontDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerCloudfrontDetails.Add( self.textCtrlCloudfront_Origins, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizerCloudfrontDetails.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+        self.staticTextEC2_Tags1 = wx.StaticText( self.panelCloudfrontDetails, wx.ID_ANY, u"Tags", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextEC2_Tags1.Wrap( -1 )
+
+        fgSizerCloudfrontDetails.Add( self.staticTextEC2_Tags1, 0, wx.ALL, 5 )
+
+        self.propertyGridCloudfront_Tags = wx.propgrid.PropertyGrid(self.panelCloudfrontDetails, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.propgrid.PG_AUTO_SORT|wx.propgrid.PG_DEFAULT_STYLE|wx.propgrid.PG_LIMITED_EDITING)
+        fgSizerCloudfrontDetails.Add( self.propertyGridCloudfront_Tags, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizerCloudfrontDetails.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+
+        bSizer132.Add( fgSizerCloudfrontDetails, 1, wx.EXPAND, 5 )
+
+
+        self.panelCloudfrontDetails.SetSizer( bSizer132 )
+        self.panelCloudfrontDetails.Layout()
+        bSizer132.Fit( self.panelCloudfrontDetails )
         self.m_splitter13.SplitVertically( self.panelCloudfrontTree, self.panelCloudfrontDetails, 0 )
         bSizer83.Add( self.m_splitter13, 1, wx.EXPAND, 5 )
 
@@ -485,7 +576,7 @@ class MainFrame ( wx.Frame ):
         self.panelCloudfront.SetSizer( bSizer83 )
         self.panelCloudfront.Layout()
         bSizer83.Fit( self.panelCloudfront )
-        self.m_auinotebook1.AddPage( self.panelCloudfront, u"Cloudfront", False, wx.NullBitmap )
+        self.m_auinotebook1.AddPage( self.panelCloudfront, u"Cloudfront", True, wx.NullBitmap )
 
         gSizer1.Add( self.m_auinotebook1, 1, wx.EXPAND |wx.ALL, 5 )
 
@@ -515,7 +606,11 @@ class MainFrame ( wx.Frame ):
         self.buttonLambda_Invoke.Bind( wx.EVT_BUTTON, self.aws_lambda_invoke )
         self.buttonReloadS3.Bind( wx.EVT_BUTTON, self.aws_s3_reload )
         self.buttonReloadRDS.Bind( wx.EVT_BUTTON, self.aws_rds_reload )
+        self.treeCloudfront.Bind( wx.EVT_TREE_ITEM_ACTIVATED, self.aws_cloudfront_load_details )
         self.buttonReloadCloudfront.Bind( wx.EVT_BUTTON, self.aws_cloudfront_reload )
+        self.buttonCloudfront_RefreshDistribution.Bind( wx.EVT_BUTTON, self.aws_cloudfront_refresh_distribution )
+        self.buttonCloudfront_OpenMgmtConsole.Bind( wx.EVT_BUTTON, self.aws_cloudfront_open_mgmt_console )
+        self.buttonCloudfront_InvalidateCache.Bind( wx.EVT_BUTTON, self.aws_cloudfront_invalidate )
 
     def __del__( self ):
         pass
@@ -579,7 +674,19 @@ class MainFrame ( wx.Frame ):
     def aws_rds_reload( self, event ):
         event.Skip()
 
+    def aws_cloudfront_load_details( self, event ):
+        event.Skip()
+
     def aws_cloudfront_reload( self, event ):
+        event.Skip()
+
+    def aws_cloudfront_refresh_distribution( self, event ):
+        event.Skip()
+
+    def aws_cloudfront_open_mgmt_console( self, event ):
+        event.Skip()
+
+    def aws_cloudfront_invalidate( self, event ):
         event.Skip()
 
     def m_splitter1OnIdle( self, event ):

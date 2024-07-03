@@ -88,7 +88,7 @@ def aws_lambda_invoke(self, event):
         # invoke the function
         response = aws_lambda.invoke_lambda_function(settings.read_config()['region'], function_name, payload)
         # show the response in a new dialog
-        dlg_response = wx.TextEntryDialog(self, 'Enter the payload for the function:', 'Response of Invocation', response, style=wx.TextEntryDialogStyle | wx.TE_MULTILINE | wx.TE_DONTWRAP)
+        dlg_response = wx.TextEntryDialog(self, 'Invocation Response:', 'Response of Invocation', response, style=wx.TextEntryDialogStyle | wx.TE_MULTILINE | wx.TE_DONTWRAP)
         dlg_response.ShowModal()
         dlg_response.Destroy()
     dlg.Destroy()
