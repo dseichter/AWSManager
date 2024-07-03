@@ -422,6 +422,89 @@ class MainFrame ( wx.Frame ):
         self.panelS3Tree.Layout()
         bSizer41.Fit( self.panelS3Tree )
         self.panelS3Details = wx.Panel( self.m_splitter11, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        fgSizer15 = wx.FlexGridSizer( 3, 1, 0, 0 )
+        fgSizer15.AddGrowableCol( 0 )
+        fgSizer15.AddGrowableRow( 1 )
+        fgSizer15.SetFlexibleDirection( wx.BOTH )
+        fgSizer15.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+
+        fgSizerS3Details = wx.FlexGridSizer( 0, 4, 0, 0 )
+        fgSizerS3Details.AddGrowableCol( 1 )
+        fgSizerS3Details.SetFlexibleDirection( wx.BOTH )
+        fgSizerS3Details.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+
+        self.staticTextS3_Details_BucketName = wx.StaticText( self.panelS3Details, wx.ID_ANY, u"Bucket Name", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextS3_Details_BucketName.Wrap( -1 )
+
+        fgSizerS3Details.Add( self.staticTextS3_Details_BucketName, 0, wx.ALL, 5 )
+
+        self.textCtrlS3_Details_BucketName = wx.TextCtrl( self.panelS3Details, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerS3Details.Add( self.textCtrlS3_Details_BucketName, 1, wx.ALL|wx.EXPAND, 5 )
+
+        self.buttonS3_Details_Refresh = wx.Button( self.panelS3Details, wx.ID_ANY, u"Refresh", wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerS3Details.Add( self.buttonS3_Details_Refresh, 0, wx.ALL, 5 )
+
+        self.buttonS3_Details_OpenMgmtConsole = wx.Button( self.panelS3Details, wx.ID_ANY, u"Open in AWS", wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerS3Details.Add( self.buttonS3_Details_OpenMgmtConsole, 0, wx.ALL, 5 )
+
+
+        fgSizer15.Add( fgSizerS3Details, 1, wx.EXPAND, 5 )
+
+        fgSizerS3Objects = wx.FlexGridSizer( 0, 2, 0, 0 )
+        fgSizerS3Objects.AddGrowableCol( 1 )
+        fgSizerS3Objects.AddGrowableRow( 0 )
+        fgSizerS3Objects.SetFlexibleDirection( wx.BOTH )
+        fgSizerS3Objects.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+
+        self.staticTextS3_Objects = wx.StaticText( self.panelS3Details, wx.ID_ANY, u"Objects", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextS3_Objects.Wrap( -1 )
+
+        fgSizerS3Objects.Add( self.staticTextS3_Objects, 0, wx.ALL, 5 )
+
+        self.treeCtrlS3_Objects = wx.TreeCtrl( self.panelS3Details, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TR_DEFAULT_STYLE )
+        fgSizerS3Objects.Add( self.treeCtrlS3_Objects, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizer15.Add( fgSizerS3Objects, 1, wx.EXPAND, 5 )
+
+        fgSizerS3Upload = wx.FlexGridSizer( 0, 3, 0, 0 )
+        fgSizerS3Upload.AddGrowableCol( 1 )
+        fgSizerS3Upload.SetFlexibleDirection( wx.BOTH )
+        fgSizerS3Upload.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+
+        self.staticTextS3_Upload = wx.StaticText( self.panelS3Details, wx.ID_ANY, u"Upload file to S3 bucket", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextS3_Upload.Wrap( -1 )
+
+        fgSizerS3Upload.Add( self.staticTextS3_Upload, 0, wx.ALL, 5 )
+
+        comboBoxS3_UploadChoices = []
+        self.comboBoxS3_Upload = wx.ComboBox( self.panelS3Details, wx.ID_ANY, u"Please select a key or enter a new key", wx.DefaultPosition, wx.DefaultSize, comboBoxS3_UploadChoices, 0 )
+        fgSizerS3Upload.Add( self.comboBoxS3_Upload, 1, wx.ALL|wx.EXPAND, 5 )
+
+        self.buttonS3_Upload = wx.Button( self.panelS3Details, wx.ID_ANY, u"Upload", wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerS3Upload.Add( self.buttonS3_Upload, 0, wx.ALL, 5 )
+
+
+        fgSizerS3Upload.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+        self.staticTextS3_Upload_DragZone = wx.StaticText( self.panelS3Details, wx.ID_ANY, u"Drag a file here to upload it to the S3 bucket", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextS3_Upload_DragZone.Wrap( -1 )
+
+        self.staticTextS3_Upload_DragZone.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHT ) )
+        self.staticTextS3_Upload_DragZone.DragAcceptFiles( True )
+
+        fgSizerS3Upload.Add( self.staticTextS3_Upload_DragZone, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizerS3Upload.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+
+        fgSizer15.Add( fgSizerS3Upload, 1, wx.EXPAND, 5 )
+
+
+        self.panelS3Details.SetSizer( fgSizer15 )
+        self.panelS3Details.Layout()
+        fgSizer15.Fit( self.panelS3Details )
         self.m_splitter11.SplitVertically( self.panelS3Tree, self.panelS3Details, 0 )
         bSizer81.Add( self.m_splitter11, 1, wx.EXPAND, 5 )
 
@@ -429,7 +512,7 @@ class MainFrame ( wx.Frame ):
         self.panelS3.SetSizer( bSizer81 )
         self.panelS3.Layout()
         bSizer81.Fit( self.panelS3 )
-        self.m_auinotebook1.AddPage( self.panelS3, u"S3", False, wx.NullBitmap )
+        self.m_auinotebook1.AddPage( self.panelS3, u"S3", True, wx.NullBitmap )
         self.panelRDS = wx.Panel( self.m_auinotebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
         bSizer82 = wx.BoxSizer( wx.VERTICAL )
 
@@ -576,7 +659,7 @@ class MainFrame ( wx.Frame ):
         self.panelCloudfront.SetSizer( bSizer83 )
         self.panelCloudfront.Layout()
         bSizer83.Fit( self.panelCloudfront )
-        self.m_auinotebook1.AddPage( self.panelCloudfront, u"Cloudfront", True, wx.NullBitmap )
+        self.m_auinotebook1.AddPage( self.panelCloudfront, u"Cloudfront", False, wx.NullBitmap )
 
         gSizer1.Add( self.m_auinotebook1, 1, wx.EXPAND |wx.ALL, 5 )
 
@@ -604,7 +687,10 @@ class MainFrame ( wx.Frame ):
         self.buttonLambda_RefreshFunction.Bind( wx.EVT_BUTTON, self.aws_lambda_refresh_function )
         self.buttonLambda_OpenMgmtConsole.Bind( wx.EVT_BUTTON, self.aws_lambda_open_mgmt_console )
         self.buttonLambda_Invoke.Bind( wx.EVT_BUTTON, self.aws_lambda_invoke )
+        self.treeS3.Bind( wx.EVT_TREE_ITEM_ACTIVATED, self.aws_s3_load_details )
         self.buttonReloadS3.Bind( wx.EVT_BUTTON, self.aws_s3_reload )
+        self.buttonS3_Details_Refresh.Bind( wx.EVT_BUTTON, self.aws_s3_refresh_bucket )
+        self.buttonS3_Details_OpenMgmtConsole.Bind( wx.EVT_BUTTON, self.aws_s3_open_mgmt_console )
         self.buttonReloadRDS.Bind( wx.EVT_BUTTON, self.aws_rds_reload )
         self.treeCloudfront.Bind( wx.EVT_TREE_ITEM_ACTIVATED, self.aws_cloudfront_load_details )
         self.buttonReloadCloudfront.Bind( wx.EVT_BUTTON, self.aws_cloudfront_reload )
@@ -668,7 +754,16 @@ class MainFrame ( wx.Frame ):
     def aws_lambda_invoke( self, event ):
         event.Skip()
 
+    def aws_s3_load_details( self, event ):
+        event.Skip()
+
     def aws_s3_reload( self, event ):
+        event.Skip()
+
+    def aws_s3_refresh_bucket( self, event ):
+        event.Skip()
+
+    def aws_s3_open_mgmt_console( self, event ):
         event.Skip()
 
     def aws_rds_reload( self, event ):
