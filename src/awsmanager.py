@@ -113,8 +113,20 @@ class AWSManagerFrame(gui.MainFrame):
     def aws_rds_reload(self, event):
         ui_aws_rds.aws_rds_reload(self, event)
 
+    def aws_cloudfront_load_details(self, event):
+        ui_aws_cloudfront.aws_cloudfront_load_details(self, event)
+
     def aws_cloudfront_reload(self, event):
         ui_aws_cloudfront.aws_cloudfront_reload(self, event)
+
+    def aws_cloudfront_refresh_distribution(self, event):
+        ui_aws_cloudfront.aws_cloudfront_refresh_distribution(self, event)
+
+    def aws_cloudfront_open_mgmt_console(self, event):
+        ui_aws_cloudfront.aws_cloudfront_open_mgmt_console(self, event)
+
+    def aws_cloudfront_invalidate(self, event):
+        ui_aws_cloudfront.aws_cloudfront_invalidate(self, event)
 
 
 # mandatory in wx, create an app, False stands for not deteriction stdin/stdout
