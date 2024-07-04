@@ -149,8 +149,9 @@ def aws_s3_menu_download_object(self, event):
         return
     # read the full path of the selected item
     s3object = aws_s3_get_full_path(self, item)
+    filename = self.treeS3.GetItemText(item)
     # ask the user where to save the file
-    dlg = wx.FileDialog(self, "Save File", wildcard="All files (*.*)|*.*", style=wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT)
+    dlg = wx.FileDialog(self, "Save File", defaultFile=filename, wildcard="All files (*.*)|*.*", style=wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT)
     if dlg.ShowModal() == wx.ID_OK:
         # download the object
         aws_s3.download_object(settings.read_config()['region'], self.textCtrlS3_Details_BucketName.GetValue(), s3object, dlg.GetPath())
