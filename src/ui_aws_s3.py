@@ -5,6 +5,7 @@ import aws_s3
 import settings
 import iconsaws
 import webbrowser
+import os
 
 NEWKEY_DEFAULT = 'Select an object or key to upload a new file.'
 NEWFILE_DEFAULT = 'Drag and drop a file here to upload it to the selected key.'
@@ -70,12 +71,7 @@ def aws_s3_load_details(self, event):
     self.treeCtrlS3_Objects.ExpandAll()
 
 
-def aws_s3_selected_key(self, event):
-    # get the selected item
-    item = self.treeCtrlS3_Objects.GetSelection()
-    if not item:
-        return
-    # read the full path of the selected item
+def aws_s3_get_full_path(self, item):
     path = []
     while item:
         path.insert(0, self.treeCtrlS3_Objects.GetItemText(item))
@@ -87,6 +83,17 @@ def aws_s3_selected_key(self, event):
     # if the item has a child node, add a / at the end, because this is a folder
     if self.treeCtrlS3_Objects.ItemHasChildren(self.treeCtrlS3_Objects.GetSelection()):
         text += '/'
+
+    return text
+
+
+def aws_s3_selected_key(self, event):
+    # get the selected item
+    item = self.treeCtrlS3_Objects.GetSelection()
+    if not item:
+        return
+    # read the full path of the selected item
+    text = aws_s3_get_full_path(self, item)
 
     self.textCtrlS3_SelectedKey.SetLabel(text)
 
@@ -113,8 +120,12 @@ def aws_s3_upload_file(self, event):
         wx.MessageBox("Please drop a file and select/enter a key before uploading.", "Warning", wx.OK | wx.ICON_WARNING)
         return
 
+    file_name_with_extension = os.path.basename(self.staticTextS3_Upload_DragZone.GetLabel())
+    target_key = self.textCtrlS3_SelectedKey.GetValue()
+    source_file = self.staticTextS3_Upload_DragZone.GetLabel()
+
     # if both are set, upload the file
-    aws_s3.upload_file(settings.read_config()['region'], self.textCtrlS3_Details_BucketName.GetValue(), self.staticTextS3_Upload_DragZone.GetLabel(), self.textCtrlS3_SelectedKey.GetValue())
+    aws_s3.upload_file(settings.read_config()['region'], self.textCtrlS3_Details_BucketName.GetValue(), source_file, target_key + file_name_with_extension)
     # show a message box that the file was uploaded
     wx.MessageBox("File uploaded successfully.", "Success", wx.OK | wx.ICON_INFORMATION)
     # clear the text control
@@ -129,3 +140,39 @@ def aws_s3_drop_file(self, event):
     file_path = event.GetFiles()[0]
     # show the file in the static text
     self.staticTextS3_Upload_DragZone.SetLabel(file_path)
+
+
+def aws_s3_menu_download_object(self, event):
+    # get the selected item
+    item = self.treeCtrlS3_Objects.GetSelection()
+    if not item:
+        return
+    # read the full path of the selected item
+    s3object = aws_s3_get_full_path(self, item)
+    # ask the user where to save the file
+    dlg = wx.FileDialog(self, "Save File", wildcard="All files (*.*)|*.*", style=wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT)
+    if dlg.ShowModal() == wx.ID_OK:
+        # download the object
+        aws_s3.download_object(settings.read_config()['region'], self.textCtrlS3_Details_BucketName.GetValue(), s3object, dlg.GetPath())
+        # show a message box that the object was downloaded
+        wx.MessageBox("Object downloaded successfully.", "Success", wx.OK | wx.ICON_INFORMATION)
+    dlg.Destroy()
+
+
+def aws_s3_menu_delete_object(self, event):
+    # get the selected item
+    item = self.treeCtrlS3_Objects.GetSelection()
+    if not item:
+        return
+    # read the full path of the selected item
+    s3object = aws_s3_get_full_path(self, item)
+    # ask the user if he really wants to delete the object
+    dlg = wx.MessageDialog(self, f"Are you sure you want to delete the object '{s3object}'?", "Delete Object", wx.YES_NO | wx.ICON_QUESTION)
+    if dlg.ShowModal() == wx.ID_YES:
+        # delete the object
+        aws_s3.delete_object(settings.read_config()['region'], self.textCtrlS3_Details_BucketName.GetValue(), s3object)
+        # show a message box that the object was deleted
+        wx.MessageBox("Object deleted successfully.", "Success", wx.OK | wx.ICON_INFORMATION)
+        # refresh the bucket
+        aws_s3_load_details(self, event)
+    dlg.Destroy()

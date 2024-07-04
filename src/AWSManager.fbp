@@ -5148,6 +5148,39 @@
                                     <property name="window_name"></property>
                                     <property name="window_style"></property>
                                     <event name="OnTreeItemActivated">aws_s3_selected_key</event>
+                                    <object class="wxMenu" expanded="true">
+                                      <property name="label">S3 Operations</property>
+                                      <property name="name">menuS3_Object</property>
+                                      <property name="permission">protected</property>
+                                      <object class="wxMenuItem" expanded="true">
+                                        <property name="bitmap"></property>
+                                        <property name="checked">0</property>
+                                        <property name="enabled">1</property>
+                                        <property name="help"></property>
+                                        <property name="id">wxID_ANY</property>
+                                        <property name="kind">wxITEM_NORMAL</property>
+                                        <property name="label">Download</property>
+                                        <property name="name">menuItemS3_DownloadObject</property>
+                                        <property name="permission">none</property>
+                                        <property name="shortcut"></property>
+                                        <property name="unchecked_bitmap"></property>
+                                        <event name="OnMenuSelection">aws_s3_menu_download_object</event>
+                                      </object>
+                                      <object class="wxMenuItem" expanded="true">
+                                        <property name="bitmap"></property>
+                                        <property name="checked">0</property>
+                                        <property name="enabled">1</property>
+                                        <property name="help"></property>
+                                        <property name="id">wxID_ANY</property>
+                                        <property name="kind">wxITEM_NORMAL</property>
+                                        <property name="label">Delete</property>
+                                        <property name="name">menuItemS3_DeleteObject</property>
+                                        <property name="permission">none</property>
+                                        <property name="shortcut"></property>
+                                        <property name="unchecked_bitmap"></property>
+                                        <event name="OnMenuSelection">aws_s3_menu_delete_object</event>
+                                      </object>
+                                    </object>
                                   </object>
                                 </object>
                               </object>
@@ -5495,7 +5528,7 @@
                                     <property name="gripper">0</property>
                                     <property name="hidden">0</property>
                                     <property name="id">wxID_ANY</property>
-                                    <property name="label">Drag a file here to upload it to the S3 bucket</property>
+                                    <property name="label">Drag and drop a file here to upload it to the selected key.</property>
                                     <property name="markup">0</property>
                                     <property name="max_size"></property>
                                     <property name="maximize_button">0</property>

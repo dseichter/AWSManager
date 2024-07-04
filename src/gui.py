@@ -462,6 +462,15 @@ class MainFrame ( wx.Frame ):
         fgSizerS3Objects.Add( self.staticTextS3_Objects, 0, wx.ALL, 5 )
 
         self.treeCtrlS3_Objects = wx.TreeCtrl( self.panelS3Details, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TR_DEFAULT_STYLE )
+        self.menuS3_Object = wx.Menu()
+        self.menuItemS3_DownloadObject = wx.MenuItem( self.menuS3_Object, wx.ID_ANY, u"Download", wx.EmptyString, wx.ITEM_NORMAL )
+        self.menuS3_Object.Append( self.menuItemS3_DownloadObject )
+
+        self.menuItemS3_DeleteObject = wx.MenuItem( self.menuS3_Object, wx.ID_ANY, u"Delete", wx.EmptyString, wx.ITEM_NORMAL )
+        self.menuS3_Object.Append( self.menuItemS3_DeleteObject )
+
+        self.treeCtrlS3_Objects.Bind( wx.EVT_RIGHT_DOWN, self.treeCtrlS3_ObjectsOnContextMenu )
+
         fgSizerS3Objects.Add( self.treeCtrlS3_Objects, 1, wx.ALL|wx.EXPAND, 5 )
 
 
@@ -497,7 +506,7 @@ class MainFrame ( wx.Frame ):
 
         fgSizerS3Upload.Add( ( 0, 0), 1, wx.EXPAND, 5 )
 
-        self.staticTextS3_Upload_DragZone = wx.StaticText( self.panelS3Details, wx.ID_ANY, u"Drag a file here to upload it to the S3 bucket", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextS3_Upload_DragZone = wx.StaticText( self.panelS3Details, wx.ID_ANY, u"Drag and drop a file here to upload it to the selected key.", wx.DefaultPosition, wx.DefaultSize, 0 )
         self.staticTextS3_Upload_DragZone.Wrap( -1 )
 
         self.staticTextS3_Upload_DragZone.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHT ) )
@@ -702,6 +711,8 @@ class MainFrame ( wx.Frame ):
         self.buttonS3_Details_Refresh.Bind( wx.EVT_BUTTON, self.aws_s3_refresh_bucket )
         self.buttonS3_Details_OpenMgmtConsole.Bind( wx.EVT_BUTTON, self.aws_s3_open_mgmt_console )
         self.treeCtrlS3_Objects.Bind( wx.EVT_TREE_ITEM_ACTIVATED, self.aws_s3_selected_key )
+        self.Bind( wx.EVT_MENU, self.aws_s3_menu_download_object, id = self.menuItemS3_DownloadObject.GetId() )
+        self.Bind( wx.EVT_MENU, self.aws_s3_menu_delete_object, id = self.menuItemS3_DeleteObject.GetId() )
         self.buttonS3_Upload.Bind( wx.EVT_BUTTON, self.aws_s3_upload_file )
         self.staticTextS3_Upload_DragZone.Bind( wx.EVT_DROP_FILES, self.aws_s3_drop_file )
         self.buttonReloadRDS.Bind( wx.EVT_BUTTON, self.aws_rds_reload )
@@ -782,6 +793,12 @@ class MainFrame ( wx.Frame ):
     def aws_s3_selected_key( self, event ):
         event.Skip()
 
+    def aws_s3_menu_download_object( self, event ):
+        event.Skip()
+
+    def aws_s3_menu_delete_object( self, event ):
+        event.Skip()
+
     def aws_s3_upload_file( self, event ):
         event.Skip()
 
@@ -817,6 +834,9 @@ class MainFrame ( wx.Frame ):
     def m_splitter11OnIdle( self, event ):
         self.m_splitter11.SetSashPosition( 0 )
         self.m_splitter11.Unbind( wx.EVT_IDLE )
+
+    def treeCtrlS3_ObjectsOnContextMenu( self, event ):
+        self.treeCtrlS3_Objects.PopupMenu( self.menuS3_Object, event.GetPosition() )
 
     def m_splitter12OnIdle( self, event ):
         self.m_splitter12.SetSashPosition( 0 )
