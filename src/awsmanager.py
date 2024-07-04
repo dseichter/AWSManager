@@ -119,6 +119,15 @@ class AWSManagerFrame(gui.MainFrame):
     def aws_s3_open_mgmt_console(self, event):
         ui_aws_s3.aws_s3_open_mgmt_console(self, event)
 
+    def aws_s3_selected_key(self, event):
+        ui_aws_s3.aws_s3_selected_key(self, event)
+
+    def aws_s3_upload_file(self, event):
+        ui_aws_s3.aws_s3_upload_file(self, event)
+
+    def aws_s3_drop_file(self, event):
+        ui_aws_s3.aws_s3_drop_file(self, event)
+
     def aws_rds_reload(self, event):
         ui_aws_rds.aws_rds_reload(self, event)
 

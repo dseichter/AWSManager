@@ -472,14 +472,24 @@ class MainFrame ( wx.Frame ):
         fgSizerS3Upload.SetFlexibleDirection( wx.BOTH )
         fgSizerS3Upload.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
 
+
+        fgSizerS3Upload.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+        self.staticTextS3_Upload_Details = wx.StaticText( self.panelS3Details, wx.ID_ANY, u"To upload a file, select a key to add the file into it. If you select a file object, the file will be overwritten. You can adjust the name, by just editing it.", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextS3_Upload_Details.Wrap( 400 )
+
+        fgSizerS3Upload.Add( self.staticTextS3_Upload_Details, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizerS3Upload.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
         self.staticTextS3_Upload = wx.StaticText( self.panelS3Details, wx.ID_ANY, u"Upload file to S3 bucket", wx.DefaultPosition, wx.DefaultSize, 0 )
         self.staticTextS3_Upload.Wrap( -1 )
 
         fgSizerS3Upload.Add( self.staticTextS3_Upload, 0, wx.ALL, 5 )
 
-        comboBoxS3_UploadChoices = []
-        self.comboBoxS3_Upload = wx.ComboBox( self.panelS3Details, wx.ID_ANY, u"Please select a key or enter a new key", wx.DefaultPosition, wx.DefaultSize, comboBoxS3_UploadChoices, 0 )
-        fgSizerS3Upload.Add( self.comboBoxS3_Upload, 1, wx.ALL|wx.EXPAND, 5 )
+        self.textCtrlS3_SelectedKey = wx.TextCtrl( self.panelS3Details, wx.ID_ANY, u"Select an object or key to upload a new file.", wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerS3Upload.Add( self.textCtrlS3_SelectedKey, 1, wx.ALL|wx.EXPAND, 5 )
 
         self.buttonS3_Upload = wx.Button( self.panelS3Details, wx.ID_ANY, u"Upload", wx.DefaultPosition, wx.DefaultSize, 0 )
         fgSizerS3Upload.Add( self.buttonS3_Upload, 0, wx.ALL, 5 )
@@ -691,6 +701,9 @@ class MainFrame ( wx.Frame ):
         self.buttonReloadS3.Bind( wx.EVT_BUTTON, self.aws_s3_reload )
         self.buttonS3_Details_Refresh.Bind( wx.EVT_BUTTON, self.aws_s3_refresh_bucket )
         self.buttonS3_Details_OpenMgmtConsole.Bind( wx.EVT_BUTTON, self.aws_s3_open_mgmt_console )
+        self.treeCtrlS3_Objects.Bind( wx.EVT_TREE_ITEM_ACTIVATED, self.aws_s3_selected_key )
+        self.buttonS3_Upload.Bind( wx.EVT_BUTTON, self.aws_s3_upload_file )
+        self.staticTextS3_Upload_DragZone.Bind( wx.EVT_DROP_FILES, self.aws_s3_drop_file )
         self.buttonReloadRDS.Bind( wx.EVT_BUTTON, self.aws_rds_reload )
         self.treeCloudfront.Bind( wx.EVT_TREE_ITEM_ACTIVATED, self.aws_cloudfront_load_details )
         self.buttonReloadCloudfront.Bind( wx.EVT_BUTTON, self.aws_cloudfront_reload )
@@ -764,6 +777,15 @@ class MainFrame ( wx.Frame ):
         event.Skip()
 
     def aws_s3_open_mgmt_console( self, event ):
+        event.Skip()
+
+    def aws_s3_selected_key( self, event ):
+        event.Skip()
+
+    def aws_s3_upload_file( self, event ):
+        event.Skip()
+
+    def aws_s3_drop_file( self, event ):
         event.Skip()
 
     def aws_rds_reload( self, event ):
