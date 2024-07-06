@@ -41,6 +41,10 @@ class AWSManagerFrame(gui.MainFrame):
         self.m_auinotebook1.SetPageBitmap(self.m_auinotebook1.FindPage(self.panelS3), iconsaws.arch_amazon_simple_storage_service_48.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap())
         self.m_auinotebook1.SetPageBitmap(self.m_auinotebook1.FindPage(self.panelCloudfront), iconsaws.arch_amazon_cloudfront_48.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap())
 
+        # add the icons to the menu items of S3
+        self.menuItemS3_DownloadObject.SetBitmap(icons.download_from_the_cloud.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap())
+        self.menuItemS3_DeleteObject.SetBitmap(icons.delete.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap())
+
     def awsmanagerClose(self, event):
         self.Close()
 
@@ -107,8 +111,32 @@ class AWSManagerFrame(gui.MainFrame):
     def aws_lambda_open_mgmt_console(self, event):
         ui_aws_lambda.aws_lambda_open_mgmt_console(self, event)
 
+    def aws_s3_load_details(self, event):
+        ui_aws_s3.aws_s3_load_details(self, event)
+
     def aws_s3_reload(self, event):
         ui_aws_s3.aws_s3_reload(self, event)
+
+    def aws_s3_refresh_bucket(self, event):
+        ui_aws_s3.aws_s3_refresh_bucket(self, event)
+
+    def aws_s3_open_mgmt_console(self, event):
+        ui_aws_s3.aws_s3_open_mgmt_console(self, event)
+
+    def aws_s3_selected_key(self, event):
+        ui_aws_s3.aws_s3_selected_key(self, event)
+
+    def aws_s3_upload_file(self, event):
+        ui_aws_s3.aws_s3_upload_file(self, event)
+
+    def aws_s3_drop_file(self, event):
+        ui_aws_s3.aws_s3_drop_file(self, event)
+
+    def aws_s3_menu_download_object(self, event):
+        ui_aws_s3.aws_s3_menu_download_object(self, event)
+
+    def aws_s3_menu_delete_object(self, event):
+        ui_aws_s3.aws_s3_menu_delete_object(self, event)
 
     def aws_rds_reload(self, event):
         ui_aws_rds.aws_rds_reload(self, event)
