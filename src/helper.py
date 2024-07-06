@@ -2,7 +2,7 @@ import urllib3
 import json
 import logging
 
-VERSION = "v2024-06-09"
+VERSION = "v2024-07-07"
 UPDATEURL = 'https://api.github.com/repos/dseichter/AWSManager/releases/latest'
 RELEASES = 'https://github.com/dseichter/AWSManager/releases'
 NAME = 'AWSManager'

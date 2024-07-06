@@ -69,11 +69,11 @@ def aws_ec2_load_details(self, event):
         self.textCtrlEC2_PublicIpAddress.SetValue(ec2_instance.get('PublicIpAddress', ''))
         self.textCtrlEC2_Architecture.SetValue(ec2_instance.get('Architecture', ''))
         # get the tags
-        self.propertyGridEC2_tags.Clear()
+        self.propertyGridEC2_Tags.Clear()
         # add the tags to the property grid
         for tag in ec2_instance['Tags']:
             self.propertyGridEC2_Tags.Append(wx.propgrid.StringProperty(tag['Key'], tag['Key'], tag['Value']))
-        self.propertyGridEC2_tags.Refresh()
+        self.propertyGridEC2_Tags.Refresh()
         # get volume information and add it to the grid
         self.gridEC2_Volumes.ClearGrid()
         volumes = ec2_instance['BlockDeviceMappings']

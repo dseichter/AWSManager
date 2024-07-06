@@ -986,6 +986,7 @@ class dialogConfiguration ( wx.Dialog ):
         self.Centre( wx.BOTH )
 
         # Connect Events
+        self.Bind( wx.EVT_SHOW, self.showConfig )
         self.buttonReloadAwsProfile.Bind( wx.EVT_BUTTON, self.reloadAwsProfiles )
         self.buttonSave.Bind( wx.EVT_BUTTON, self.saveConfig )
         self.buttonCancel.Bind( wx.EVT_BUTTON, self.cancelConfig )
@@ -995,6 +996,9 @@ class dialogConfiguration ( wx.Dialog ):
 
 
     # Virtual event handlers, override them in your derived class
+    def showConfig( self, event ):
+        event.Skip()
+
     def reloadAwsProfiles( self, event ):
         event.Skip()
 
