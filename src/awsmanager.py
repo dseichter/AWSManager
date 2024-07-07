@@ -142,9 +142,9 @@ class AWSManagerFrame(gui.MainFrame):
 
     def aws_rds_reload(self, event):
         ui_aws_rds.aws_rds_reload(self, event)
-        
+
     def aws_ecs_reload(self, event):
-        ui_aws_ecs.aws_ecs_reload(self, event)       
+        ui_aws_ecs.aws_ecs_reload(self, event)
 
     def aws_cloudfront_load_details(self, event):
         ui_aws_cloudfront.aws_cloudfront_load_details(self, event)
