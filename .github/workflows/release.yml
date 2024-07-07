@@ -28,7 +28,7 @@ jobs:
             run: pip install -r src/requirements.txt
 
           - name: Build Windows binary
-            run: pyinstaller --onefile -w src/awsmanager.py -n awsmanager-windows-${{ github.ref_name }}.exe --icon=src/Happy_Cloud.ico
+            run: pyinstaller --onefile -w src/awsmanager.py -n awsmanager-windows-${{ github.ref_name }}.exe --icon=icons/Happy_Cloud.ico
 
           - name: Upload artifact
             uses: actions/upload-artifact@v4
@@ -60,7 +60,7 @@ jobs:
             run: pip install -r src/requirements.txt
 
           - name: Build Linux binary
-            run: pyinstaller --onefile src/awsmanager.py -n awsmanager-linux-${{ github.ref_name }} --icon=src/Happy_Cloud.ico
+            run: pyinstaller --onefile src/awsmanager.py -n awsmanager-linux-${{ github.ref_name }} --icon=icons/Happy_Cloud.ico
 
           - name: Upload artifact
             uses: actions/upload-artifact@v4
