@@ -18,6 +18,7 @@ import ui_aws_lambda
 import ui_aws_s3
 import ui_aws_rds
 import ui_aws_cloudfront
+import ui_aws_ecs
 
 
 class AWSManagerFrame(gui.MainFrame):
@@ -40,6 +41,7 @@ class AWSManagerFrame(gui.MainFrame):
         self.m_auinotebook1.SetPageBitmap(self.m_auinotebook1.FindPage(self.panelRDS), iconsaws.arch_amazon_rds_48.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap())
         self.m_auinotebook1.SetPageBitmap(self.m_auinotebook1.FindPage(self.panelS3), iconsaws.arch_amazon_simple_storage_service_48.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap())
         self.m_auinotebook1.SetPageBitmap(self.m_auinotebook1.FindPage(self.panelCloudfront), iconsaws.arch_amazon_cloudfront_48.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap())
+        self.m_auinotebook1.SetPageBitmap(self.m_auinotebook1.FindPage(self.panelECS), iconsaws.arch_amazon_elastic_container_service_48.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap())
 
         # add the icons to the menu items of S3
         self.menuItemS3_DownloadObject.SetBitmap(icons.download_from_the_cloud.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap())
@@ -140,6 +142,9 @@ class AWSManagerFrame(gui.MainFrame):
 
     def aws_rds_reload(self, event):
         ui_aws_rds.aws_rds_reload(self, event)
+        
+    def aws_ecs_reload(self, event):
+        ui_aws_ecs.aws_ecs_reload(self, event)       
 
     def aws_cloudfront_load_details(self, event):
         ui_aws_cloudfront.aws_cloudfront_load_details(self, event)

@@ -531,7 +531,7 @@ class MainFrame ( wx.Frame ):
         self.panelS3.SetSizer( bSizer81 )
         self.panelS3.Layout()
         bSizer81.Fit( self.panelS3 )
-        self.m_auinotebook1.AddPage( self.panelS3, u"S3", True, wx.NullBitmap )
+        self.m_auinotebook1.AddPage( self.panelS3, u"S3", False, wx.NullBitmap )
         self.panelRDS = wx.Panel( self.m_auinotebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
         bSizer82 = wx.BoxSizer( wx.VERTICAL )
 
@@ -560,6 +560,34 @@ class MainFrame ( wx.Frame ):
         self.panelRDS.Layout()
         bSizer82.Fit( self.panelRDS )
         self.m_auinotebook1.AddPage( self.panelRDS, u"RDS", False, wx.NullBitmap )
+        self.panelECS = wx.Panel( self.m_auinotebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        bSizer821 = wx.BoxSizer( wx.VERTICAL )
+
+        self.m_splitter121 = wx.SplitterWindow( self.panelECS, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.SP_3D )
+        self.m_splitter121.Bind( wx.EVT_IDLE, self.m_splitter121OnIdle )
+
+        self.panelECSTree = wx.Panel( self.m_splitter121, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        bSizer421 = wx.BoxSizer( wx.VERTICAL )
+
+        self.treeECS = wx.TreeCtrl( self.panelECSTree, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TR_DEFAULT_STYLE|wx.TR_LINES_AT_ROOT|wx.TR_TWIST_BUTTONS )
+        bSizer421.Add( self.treeECS, 1, wx.ALL|wx.EXPAND, 5 )
+
+        self.buttonReloadECS = wx.Button( self.panelECSTree, wx.ID_ANY, u"Reload ECS Instances", wx.DefaultPosition, wx.DefaultSize, 0 )
+        bSizer421.Add( self.buttonReloadECS, 0, wx.ALL, 5 )
+
+
+        self.panelECSTree.SetSizer( bSizer421 )
+        self.panelECSTree.Layout()
+        bSizer421.Fit( self.panelECSTree )
+        self.panelECSDetails = wx.Panel( self.m_splitter121, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        self.m_splitter121.SplitVertically( self.panelECSTree, self.panelECSDetails, 0 )
+        bSizer821.Add( self.m_splitter121, 1, wx.EXPAND, 5 )
+
+
+        self.panelECS.SetSizer( bSizer821 )
+        self.panelECS.Layout()
+        bSizer821.Fit( self.panelECS )
+        self.m_auinotebook1.AddPage( self.panelECS, u"ECS", True, wx.NullBitmap )
         self.panelCloudfront = wx.Panel( self.m_auinotebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
         bSizer83 = wx.BoxSizer( wx.VERTICAL )
 
@@ -716,6 +744,7 @@ class MainFrame ( wx.Frame ):
         self.buttonS3_Upload.Bind( wx.EVT_BUTTON, self.aws_s3_upload_file )
         self.staticTextS3_Upload_DragZone.Bind( wx.EVT_DROP_FILES, self.aws_s3_drop_file )
         self.buttonReloadRDS.Bind( wx.EVT_BUTTON, self.aws_rds_reload )
+        self.buttonReloadECS.Bind( wx.EVT_BUTTON, self.aws_ecs_reload )
         self.treeCloudfront.Bind( wx.EVT_TREE_ITEM_ACTIVATED, self.aws_cloudfront_load_details )
         self.buttonReloadCloudfront.Bind( wx.EVT_BUTTON, self.aws_cloudfront_reload )
         self.buttonCloudfront_RefreshDistribution.Bind( wx.EVT_BUTTON, self.aws_cloudfront_refresh_distribution )
@@ -808,6 +837,9 @@ class MainFrame ( wx.Frame ):
     def aws_rds_reload( self, event ):
         event.Skip()
 
+    def aws_ecs_reload( self, event ):
+        event.Skip()
+
     def aws_cloudfront_load_details( self, event ):
         event.Skip()
 
@@ -841,6 +873,10 @@ class MainFrame ( wx.Frame ):
     def m_splitter12OnIdle( self, event ):
         self.m_splitter12.SetSashPosition( 0 )
         self.m_splitter12.Unbind( wx.EVT_IDLE )
+
+    def m_splitter121OnIdle( self, event ):
+        self.m_splitter121.SetSashPosition( 0 )
+        self.m_splitter121.Unbind( wx.EVT_IDLE )
 
     def m_splitter13OnIdle( self, event ):
         self.m_splitter13.SetSashPosition( 0 )
