@@ -56,7 +56,7 @@ Get a complete overview of all Cloudfront distributions within your account. Add
 
 ![Cloudfront](images/cloudfront.png "Cloudfront")
 
-### further services
+### Further services
 
 More services will be implemented. Check the **open issues** or create a new one, if you miss anything.
 
