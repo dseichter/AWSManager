@@ -350,3 +350,55 @@ arch_aws_lambda_48 = PyEmbeddedImage(
 index.append('arch_aws-lambda_48')
 catalog['arch_aws-lambda_48'] = arch_aws_lambda_48
 
+#----------------------------------------------------------------------
+res_amazon_elastic_container_service_service_48 = PyEmbeddedImage(
+    b'iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAERlWElm'
+    b'TU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAMKAD'
+    b'AAQAAAABAAAAMAAAAADbN2wMAAAEd0lEQVRoBe1aS2gUSRj+unvGiNFMMrNuMEZFfKyg4M1l'
+    b'hVUUTwYFEU+eBPUiigkqiCJ72IMgMWYFUZFlD4KGXXYF8SA+CB48CHrQswiKj+CkJ8Qoaqa7'
+    b'96ua7nkkM92VSc2MAQs69fj/+uv7qqrr/7smwPfU2BkwKg0/3I1blG2tJNfYPmq62NbWjwfV'
+    b'2DRDOtUDvBi+xbHwawiOUFEsVEphqg8VVymqb5TcPozfPQMnovTC5JEEgs7DB9EJC4uCuo6c'
+    b'4DuFHcPD4uHD+MUvv07246Wq/Yqzy3fAE0bECkjwMbxgVZmwKoAyeq4Vw8rWM3heRjapSQ1Q'
+    b'buaF7hifZ5Os6GtYTVMt2XEsYa6RQAHgM67I+kJVb4mrfo8WN0/FatgpNBU7DdNV20Jl4HG2'
+    b'Bti8o4xoOk0Sj2HgdvAO0tgH18PO+ecwWM5w1QRoTICPlzOqoa0YV9I0sIk2B8vZLVYsJ49s'
+    b'G7cwt30UXyMVq1Cwm3GS3U6FdZ02AQHeuIzxsEGqlXEbOVF9p01ADJDuxkI6lD56jtb8gCZc'
+    b'z8OlH/rwX76tBgUtBIhLvA+7SoIOukGSSrH92yfAUyOW89v4FyYuMjRYztm/QA7Wm/2Y0zQX'
+    b'/VOZfPZ/nOzDRZU+ulYgN5aHl6le3Mn0IE3wMs1Josn5gr1+VSlj3zYqNoCAgXXpHpxwPHQE'
+    b'QVZiNj7an7FPCbmv5Jky7lLqomcFXMZIOcTrufz5UINNY8Zv8oi9ooSmCiUtBJyvuG41IUHw'
+    b'Yull4iy6hoN/gnqtci0Efrwgo9TeWoEMszvjg7kZT0DLFho5imWOgz9LPDHgsn4+dY7tNUxa'
+    b'CGQddPEF3jARJx3cAbZ9+wR4XMqtSAd0lXc8Z3gCrSLwAZfRxLsjaI45uDaRXFidxh7SE58O'
+    b'0wlkWlYgMMZVSPNG4Sk9scWPEJlmxzCL22tboKOSs6tyeK6VAJ3ZJrsHfxD8/ABowsZYphnb'
+    b'g7pKzhj6rYqe0NFCgIFbxg8d1rK8NhicbRn/W+Fm0KY710IglcX1TByO6xY8MYG6FuT9qm7M'
+    b'Jfa0EDDO4wutXi2xXKfKjHdkM56Ali1kH8Iaz5KRZ+GbWHhioJc3eTUN8iJXwNuPuOmF3/94'
+    b'MWwh2J/4tBc9C3ie72a9pilyBXg3o+xUiPRy1sUpy8IaOrW7Avn7Y5hnjufKqkxI/D5vM46r'
+    b'6FckwDjmBs/0Lt+IOOYr6uYH8vCpvR9D9MQdYv+IFDfBSALrcjW1vxzslZpmCKjk2cK9p/zx'
+    b'wcDDSKMGungZ1SH9ge/ZEs8xOtyJnyP7FimQvF1UDS1Gz2pp95ZMNzaKJhGoBSLDxRB/bRFp'
+    b'hXx8CbMh4295u/ZISmvwR4kAwTk+ptUEPjgRR1srBuwPSJNV/puY3wJu3JqsO7HvdOtKBFIJ'
+    b'PLFH8BeJLA0GJKENLEtevHkgL9wJZPXMlQgQYJag9hQD414Xp1O8uK0R5Ug/0AhQUxlTaQXC'
+    b'DAo/wdVoWKp6BegnxL8i1CON8d17UI+Bvo9RzQz8D09IDMZ/E5PRAAAAAElFTkSuQmCC')
+index.append('res_amazon-elastic-container-service_service_48')
+catalog['res_amazon-elastic-container-service_service_48'] = res_amazon_elastic_container_service_service_48
+
+#----------------------------------------------------------------------
+res_amazon_elastic_container_service_task_48 = PyEmbeddedImage(
+    b'iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAERlWElm'
+    b'TU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAMKAD'
+    b'AAQAAAABAAAAMAAAAADbN2wMAAADNUlEQVRoBe1ZPWwTMRR+vhSJhUq0KQoIiWx0ZAImykbF'
+    b'EsZuZGEE2kqosJDAQhBSG+YObaUOHWEAMSCE2GBihA0kBAiaSLRLEO2Zz9f4uEuvvnvH/SRS'
+    b'LKVn+/ne+z4/P/v5SjQs+c6AMJlvzdEzyC+bxqQs25aSrhSb9OogO9ZBgm5/nuAVhCPCogsm'
+    b'jCMmoZaNL5HRU3pcks/WPNVJUi1MZ5gHwt7PXT7wBCItIT3NmzfpnCjQPQTWYd2nnkJQR+5S'
+    b'rfiY3nr7s6izCCCgrmFdXtoXEBIkLPoCwP1NAAAdwsD7EF54oWYYsz8NQgta9uMWlQ798XtI'
+    b'jYtajjbpU9SxahzLA65iQR8mlui1am/OUxlecYu1Qxu2oCm3g1/Z52CTingEDBqFpO/YdD8b'
+    b'hiQqikXAwumIfbqskADwGY8DaLxJM4kiDFHGIoD1voW1r1ZMBX8qSrcGr2QhtlIRswjs2vSg'
+    b'IOirFP4ghRc6kK2lgjBEKYvARJO+QV8jRGem4oE/iYcEMl0vAcZYMfBzlo4jiK8GBrGktW6M'
+    b'BJhJr4tFoGDRHWyj1929s4tLbaWQncDjRnpQgzWzCAD8qFKDs/4pvPDeqe8dZBUtCzaTXi+L'
+    b'gIaBXOdJcZFWVRu5UBXngHOoqXZrljbA8Lyqxym4/ZU578UiYDIAz5TgoVOmMUnK4hGQNImA'
+    b'vugAQd0LyB6hmf9Jp726otS5BHaUUszwAnIfdQfwFkd27BGy0QwLi4C0aRlXypMI2KAr5XKG'
+    b'uF1TLALdO++0+3YfVIapRN5OGHgPsGJA1slqb9FZ2/YHsWVRZ2yU3ok62Vl7hEWg/cv5VnnX'
+    b'wj7qK0iGILuPvpqvP4MGiwDw6BP2IzA7+z24lNB/2iPLAPY/E1wCzptIFxo9udCKVtmeo9sg'
+    b'N6nb3CdyoSrnnVgETAYQBOpL3ZRpTIisGiL3iRMnAPANeGjVZyXFRiwCSJ9X8O+nvWWD9eIt'
+    b'WALON1NvX5p11jmABO4l8P7uBaT6lKy3P4s2ywNji7QOUOrXN4Xlgb5B7QEyJOCZjFyqA++B'
+    b'SEGMLbNns8xgsiNaDPPA8wygmkxs4xr7xjRgKMt7Bv4CAgOyUTcmDtgAAAAASUVORK5CYII=')
+index.append('res_amazon-elastic-container-service_task_48')
+catalog['res_amazon-elastic-container-service_task_48'] = res_amazon_elastic_container_service_task_48
+
