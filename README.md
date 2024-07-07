@@ -22,7 +22,7 @@ See current Freeware version (deprecated) of AWSManager at [dseichter.de](https:
 
 The installation is very simple. Save the downloaded file in a destination folder of your choice and start the program. At startup a configuration file will be created in the same directory. The configuration windows can be found within the menu Extras.
 
-![AWS Manager - Configuration](images/configuration.png) "AWS Manager - Configuration")
+![AWS Manager - Configuration](images/configuration.png "AWS Manager - Configuration")
 
 ## Services
 
