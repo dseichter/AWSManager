@@ -1,7 +1,9 @@
 # importing wx files
 import wx
+
 # import the newly created GUI file
 import gui
+
 # import common libraries
 import webbrowser
 
@@ -29,23 +31,82 @@ class AWSManagerFrame(gui.MainFrame):
 
         # specify all the icons
         gui.MainFrame.SetIcon(self, icons.happy_cloud.GetIcon())
-        self.menuitemFileClose.SetBitmap(icons.cancel.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap())
-        self.menuitemExtrasConfiguration.SetBitmap(icons.settings.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap())
-        self.menuitemHelpSupport.SetBitmap(icons.get_help.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap())
-        self.menuitemHelpUpdate.SetBitmap(icons.restart.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap())
-        self.menuitemHelpAbout.SetBitmap(icons.info.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap())
+        self.menuitemFileClose.SetBitmap(
+            icons.cancel.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap()
+        )
+        self.menuitemExtrasConfiguration.SetBitmap(
+            icons.settings.GetBitmap()
+            .ConvertToImage()
+            .Rescale(16, 16)
+            .ConvertToBitmap()
+        )
+        self.menuitemHelpSupport.SetBitmap(
+            icons.get_help.GetBitmap()
+            .ConvertToImage()
+            .Rescale(16, 16)
+            .ConvertToBitmap()
+        )
+        self.menuitemHelpUpdate.SetBitmap(
+            icons.restart.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap()
+        )
+        self.menuitemHelpAbout.SetBitmap(
+            icons.info.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap()
+        )
 
         # Add the AWS icons to all Notebook tabs
-        self.m_auinotebook1.SetPageBitmap(self.m_auinotebook1.FindPage(self.panelEC2), iconsaws.arch_amazon_ec2_48.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap())
-        self.m_auinotebook1.SetPageBitmap(self.m_auinotebook1.FindPage(self.panelLambda), iconsaws.arch_aws_lambda_48.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap())
-        self.m_auinotebook1.SetPageBitmap(self.m_auinotebook1.FindPage(self.panelRDS), iconsaws.arch_amazon_rds_48.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap())
-        self.m_auinotebook1.SetPageBitmap(self.m_auinotebook1.FindPage(self.panelS3), iconsaws.arch_amazon_simple_storage_service_48.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap())
-        self.m_auinotebook1.SetPageBitmap(self.m_auinotebook1.FindPage(self.panelCloudfront), iconsaws.arch_amazon_cloudfront_48.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap())
-        self.m_auinotebook1.SetPageBitmap(self.m_auinotebook1.FindPage(self.panelECS), iconsaws.arch_amazon_elastic_container_service_48.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap())
+        self.m_auinotebook1.SetPageBitmap(
+            self.m_auinotebook1.FindPage(self.panelEC2),
+            iconsaws.arch_amazon_ec2_48.GetBitmap()
+            .ConvertToImage()
+            .Rescale(16, 16)
+            .ConvertToBitmap(),
+        )
+        self.m_auinotebook1.SetPageBitmap(
+            self.m_auinotebook1.FindPage(self.panelLambda),
+            iconsaws.arch_aws_lambda_48.GetBitmap()
+            .ConvertToImage()
+            .Rescale(16, 16)
+            .ConvertToBitmap(),
+        )
+        self.m_auinotebook1.SetPageBitmap(
+            self.m_auinotebook1.FindPage(self.panelRDS),
+            iconsaws.arch_amazon_rds_48.GetBitmap()
+            .ConvertToImage()
+            .Rescale(16, 16)
+            .ConvertToBitmap(),
+        )
+        self.m_auinotebook1.SetPageBitmap(
+            self.m_auinotebook1.FindPage(self.panelS3),
+            iconsaws.arch_amazon_simple_storage_service_48.GetBitmap()
+            .ConvertToImage()
+            .Rescale(16, 16)
+            .ConvertToBitmap(),
+        )
+        self.m_auinotebook1.SetPageBitmap(
+            self.m_auinotebook1.FindPage(self.panelCloudfront),
+            iconsaws.arch_amazon_cloudfront_48.GetBitmap()
+            .ConvertToImage()
+            .Rescale(16, 16)
+            .ConvertToBitmap(),
+        )
+        self.m_auinotebook1.SetPageBitmap(
+            self.m_auinotebook1.FindPage(self.panelECS),
+            iconsaws.arch_amazon_elastic_container_service_48.GetBitmap()
+            .ConvertToImage()
+            .Rescale(16, 16)
+            .ConvertToBitmap(),
+        )
 
         # add the icons to the menu items of S3
-        self.menuItemS3_DownloadObject.SetBitmap(icons.download_from_the_cloud.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap())
-        self.menuItemS3_DeleteObject.SetBitmap(icons.delete.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap())
+        self.menuItemS3_DownloadObject.SetBitmap(
+            icons.download_from_the_cloud.GetBitmap()
+            .ConvertToImage()
+            .Rescale(16, 16)
+            .ConvertToBitmap()
+        )
+        self.menuItemS3_DeleteObject.SetBitmap(
+            icons.delete.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap()
+        )
 
     def awsmanagerClose(self, event):
         self.Close()
@@ -55,7 +116,7 @@ class AWSManagerFrame(gui.MainFrame):
         settings.create_config()
 
         # add the version to the label
-        self.SetTitle(helper.NAME + ' ' + helper.VERSION)
+        self.SetTitle(helper.NAME + " " + helper.VERSION)
 
     def miFileClose(self, event):
         self.Close()
@@ -67,15 +128,23 @@ class AWSManagerFrame(gui.MainFrame):
         dlg.Destroy()
 
     def miHelpSupport(self, event):
-        webbrowser.open_new_tab('https://github.com/dseichter/AWSManager')  # Add the URL of the GitHub repository
+        webbrowser.open_new_tab(
+            "https://github.com/dseichter/AWSManager"
+        )  # Add the URL of the GitHub repository
 
     def miHelpUpdate(self, event):
         if helper.check_for_new_release():
-            result = wx.MessageBox('A new release is available.\nWould you like to open the download page?', 'Update available', wx.YES_NO | wx.ICON_INFORMATION)
+            result = wx.MessageBox(
+                "A new release is available.\nWould you like to open the download page?",
+                "Update available",
+                wx.YES_NO | wx.ICON_INFORMATION,
+            )
             if result == wx.YES:
                 webbrowser.open_new_tab(helper.RELEASES)
         else:
-            wx.MessageBox('No new release available.', 'No update', wx.OK | wx.ICON_INFORMATION)
+            wx.MessageBox(
+                "No new release available.", "No update", wx.OK | wx.ICON_INFORMATION
+            )
 
     def miHelpAbout(self, event):
         # open the about dialog
@@ -143,8 +212,20 @@ class AWSManagerFrame(gui.MainFrame):
     def aws_rds_reload(self, event):
         ui_aws_rds.aws_rds_reload(self, event)
 
+    def aws_ecs_load_details(self, event):
+        ui_aws_ecs.aws_ecs_load_details(self, event)
+
+    def aws_ecs_open_mgmt_console(self, event):
+        ui_aws_ecs.aws_ecs_open_mgmt_console(self, event)
+
     def aws_ecs_reload(self, event):
         ui_aws_ecs.aws_ecs_reload(self, event)
+
+    def aws_ecs_refresh_service(self, event):
+        ui_aws_ecs.aws_ecs_refresh_service(self, event)
+
+    def aws_ec2_change_desiredcount(self, event):
+        ui_aws_ecs.aws_ec2_change_desiredcount(self, event)
 
     def aws_cloudfront_load_details(self, event):
         ui_aws_cloudfront.aws_cloudfront_load_details(self, event)

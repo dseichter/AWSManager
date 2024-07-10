@@ -580,6 +580,135 @@ class MainFrame ( wx.Frame ):
         self.panelECSTree.Layout()
         bSizer421.Fit( self.panelECSTree )
         self.panelECSDetails = wx.Panel( self.m_splitter121, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        bSizer18 = wx.BoxSizer( wx.VERTICAL )
+
+        fgSizerECSDetails = wx.FlexGridSizer( 0, 3, 0, 0 )
+        fgSizerECSDetails.AddGrowableCol( 1 )
+        fgSizerECSDetails.SetFlexibleDirection( wx.BOTH )
+        fgSizerECSDetails.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+
+        self.staticTextECS_ServiceName = wx.StaticText( self.panelECSDetails, wx.ID_ANY, u"ServiceName", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextECS_ServiceName.Wrap( -1 )
+
+        fgSizerECSDetails.Add( self.staticTextECS_ServiceName, 0, wx.ALL, 5 )
+
+        self.textCtrlECS_ServiceName = wx.TextCtrl( self.panelECSDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerECSDetails.Add( self.textCtrlECS_ServiceName, 1, wx.ALL|wx.EXPAND, 5 )
+
+        self.buttonECS_RefreshService = wx.Button( self.panelECSDetails, wx.ID_ANY, u"Refresh", wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerECSDetails.Add( self.buttonECS_RefreshService, 0, wx.ALL, 5 )
+
+        self.staticTextECS_Status = wx.StaticText( self.panelECSDetails, wx.ID_ANY, u"Status", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextECS_Status.Wrap( -1 )
+
+        fgSizerECSDetails.Add( self.staticTextECS_Status, 0, wx.ALL, 5 )
+
+        self.textCtrlECS_Status = wx.TextCtrl( self.panelECSDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerECSDetails.Add( self.textCtrlECS_Status, 0, wx.ALL, 5 )
+
+        self.buttonECS_OpenMgmtConsole = wx.Button( self.panelECSDetails, wx.ID_ANY, u"Open in AWS", wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerECSDetails.Add( self.buttonECS_OpenMgmtConsole, 0, wx.ALL, 5 )
+
+        self.staticTextECS_DesiredCount = wx.StaticText( self.panelECSDetails, wx.ID_ANY, u"Desired Count", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextECS_DesiredCount.Wrap( -1 )
+
+        fgSizerECSDetails.Add( self.staticTextECS_DesiredCount, 0, wx.ALL, 5 )
+
+        self.textCtrlECS_DesiredCount = wx.TextCtrl( self.panelECSDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerECSDetails.Add( self.textCtrlECS_DesiredCount, 0, wx.ALL, 5 )
+
+        self.buttonECS_DesiredCount = wx.Button( self.panelECSDetails, wx.ID_ANY, u"Change", wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerECSDetails.Add( self.buttonECS_DesiredCount, 0, wx.ALL, 5 )
+
+        self.staticTextECS_RunningCount = wx.StaticText( self.panelECSDetails, wx.ID_ANY, u"Running Count", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextECS_RunningCount.Wrap( -1 )
+
+        fgSizerECSDetails.Add( self.staticTextECS_RunningCount, 0, wx.ALL, 5 )
+
+        self.textCtrlECS_RunningCount = wx.TextCtrl( self.panelECSDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerECSDetails.Add( self.textCtrlECS_RunningCount, 0, wx.ALL, 5 )
+
+
+        fgSizerECSDetails.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+        self.staticTextECS_PendingCount = wx.StaticText( self.panelECSDetails, wx.ID_ANY, u"Pending Count", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextECS_PendingCount.Wrap( -1 )
+
+        fgSizerECSDetails.Add( self.staticTextECS_PendingCount, 0, wx.ALL, 5 )
+
+        self.textCtrlECS_PendingCount = wx.TextCtrl( self.panelECSDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerECSDetails.Add( self.textCtrlECS_PendingCount, 0, wx.ALL, 5 )
+
+
+        fgSizerECSDetails.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+        self.staticTextECS_TaskDefinition = wx.StaticText( self.panelECSDetails, wx.ID_ANY, u"Task Definition", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextECS_TaskDefinition.Wrap( -1 )
+
+        fgSizerECSDetails.Add( self.staticTextECS_TaskDefinition, 0, wx.ALL, 5 )
+
+        self.textCtrlECS_TaskDefinition = wx.TextCtrl( self.panelECSDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerECSDetails.Add( self.textCtrlECS_TaskDefinition, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizerECSDetails.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+        self.staticTextECS_Tags = wx.StaticText( self.panelECSDetails, wx.ID_ANY, u"Tags", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextECS_Tags.Wrap( -1 )
+
+        fgSizerECSDetails.Add( self.staticTextECS_Tags, 0, wx.ALL, 5 )
+
+        self.propertyGridECS_Tags = wx.propgrid.PropertyGrid(self.panelECSDetails, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.propgrid.PG_AUTO_SORT|wx.propgrid.PG_DEFAULT_STYLE|wx.propgrid.PG_LIMITED_EDITING)
+        fgSizerECSDetails.Add( self.propertyGridECS_Tags, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizerECSDetails.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+
+        bSizer18.Add( fgSizerECSDetails, 1, wx.EXPAND, 5 )
+
+        fgSizerECSEvents = wx.FlexGridSizer( 0, 1, 0, 0 )
+        fgSizerECSEvents.AddGrowableCol( 0 )
+        fgSizerECSEvents.AddGrowableRow( 1 )
+        fgSizerECSEvents.SetFlexibleDirection( wx.BOTH )
+        fgSizerECSEvents.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+
+        self.staticTextEC2_Volumes1 = wx.StaticText( self.panelECSDetails, wx.ID_ANY, u"Last Events", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextEC2_Volumes1.Wrap( -1 )
+
+        fgSizerECSEvents.Add( self.staticTextEC2_Volumes1, 0, wx.ALL, 5 )
+
+        self.gridECS_Events = wx.grid.Grid( self.panelECSDetails, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
+
+        # Grid
+        self.gridECS_Events.CreateGrid( 2, 2 )
+        self.gridECS_Events.EnableEditing( False )
+        self.gridECS_Events.EnableGridLines( True )
+        self.gridECS_Events.EnableDragGridSize( False )
+        self.gridECS_Events.SetMargins( 0, 0 )
+
+        # Columns
+        self.gridECS_Events.EnableDragColMove( False )
+        self.gridECS_Events.EnableDragColSize( True )
+        self.gridECS_Events.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+
+        # Rows
+        self.gridECS_Events.EnableDragRowSize( True )
+        self.gridECS_Events.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
+
+        # Label Appearance
+
+        # Cell Defaults
+        self.gridECS_Events.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
+        fgSizerECSEvents.Add( self.gridECS_Events, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        bSizer18.Add( fgSizerECSEvents, 1, wx.EXPAND, 5 )
+
+
+        self.panelECSDetails.SetSizer( bSizer18 )
+        self.panelECSDetails.Layout()
+        bSizer18.Fit( self.panelECSDetails )
         self.m_splitter121.SplitVertically( self.panelECSTree, self.panelECSDetails, 0 )
         bSizer821.Add( self.m_splitter121, 1, wx.EXPAND, 5 )
 
@@ -744,7 +873,11 @@ class MainFrame ( wx.Frame ):
         self.buttonS3_Upload.Bind( wx.EVT_BUTTON, self.aws_s3_upload_file )
         self.staticTextS3_Upload_DragZone.Bind( wx.EVT_DROP_FILES, self.aws_s3_drop_file )
         self.buttonReloadRDS.Bind( wx.EVT_BUTTON, self.aws_rds_reload )
+        self.treeECS.Bind( wx.EVT_TREE_ITEM_ACTIVATED, self.aws_ecs_load_details )
         self.buttonReloadECS.Bind( wx.EVT_BUTTON, self.aws_ecs_reload )
+        self.buttonECS_RefreshService.Bind( wx.EVT_BUTTON, self.aws_ecs_refresh_service )
+        self.buttonECS_OpenMgmtConsole.Bind( wx.EVT_BUTTON, self.aws_ecs_open_mgmt_console )
+        self.buttonECS_DesiredCount.Bind( wx.EVT_BUTTON, self.aws_ec2_change_desiredcount )
         self.treeCloudfront.Bind( wx.EVT_TREE_ITEM_ACTIVATED, self.aws_cloudfront_load_details )
         self.buttonReloadCloudfront.Bind( wx.EVT_BUTTON, self.aws_cloudfront_reload )
         self.buttonCloudfront_RefreshDistribution.Bind( wx.EVT_BUTTON, self.aws_cloudfront_refresh_distribution )
@@ -837,7 +970,19 @@ class MainFrame ( wx.Frame ):
     def aws_rds_reload( self, event ):
         event.Skip()
 
+    def aws_ecs_load_details( self, event ):
+        event.Skip()
+
     def aws_ecs_reload( self, event ):
+        event.Skip()
+
+    def aws_ecs_refresh_service( self, event ):
+        event.Skip()
+
+    def aws_ecs_open_mgmt_console( self, event ):
+        event.Skip()
+
+    def aws_ec2_change_desiredcount( self, event ):
         event.Skip()
 
     def aws_cloudfront_load_details( self, event ):
