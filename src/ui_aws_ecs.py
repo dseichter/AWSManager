@@ -124,32 +124,37 @@ def aws_ec2_change_desiredcount(self, event):
     item = self.treeECS.GetSelection()
     if not item:
         return
-    
+
     # check, if the selected item is a cluster (has children)
     if self.treeECS.ItemHasChildren(self.treeECS.GetSelection()):
         return
-    
+
     # now we know, that the selected item is a service
     service = self.treeECS.GetItemText(self.treeECS.GetSelection()).split(" ")[0]
     cluster = self.treeECS.GetItemText(
         self.treeECS.GetItemParent(self.treeECS.GetSelection())
     )
-    
+
     desired_count_current = self.textCtrlECS_DesiredCount.GetValue()
-    
+
     # open a dialog and ask the user for the desired count
     dlg = wx.TextEntryDialog(
-        self, "Please enter the desired count for the service", "Desired Count", value=desired_count_current,
+        self,
+        "Please enter the desired count for the service",
+        "Desired Count",
+        value=desired_count_current,
     )
     dlg.SetMaxLength(2)
 
     # Accept only integers
     if dlg.ShowModal() == wx.ID_OK:
         desired_count_new = int(dlg.GetValue())
-        
+
         if desired_count_current != desired_count_new:
-            aws_ecs.set_ecs_desired_count(settings.read_config()["region"], cluster, service, desired_count_new)
-        
+            aws_ecs.set_ecs_desired_count(
+                settings.read_config()["region"], cluster, service, desired_count_new
+            )
+
         aws_ecs_load_details(self, event)
     dlg.Destroy()
 
