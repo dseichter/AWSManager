@@ -1100,10 +1100,10 @@ class dialogConfiguration ( wx.Dialog ):
         self.textAwsSessionToken = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 400,-1 ), wx.TE_MULTILINE )
         fgSizer5.Add( self.textAwsSessionToken, 1, wx.ALL|wx.EXPAND, 5 )
 
-        self.m_staticText9 = wx.StaticText( self, wx.ID_ANY, u"If session token is provided, please keep in mind, that this will be expire some time!", wx.DefaultPosition, wx.DefaultSize, 0 )
-        self.m_staticText9.Wrap( -1 )
+        self.m_staticText9 = wx.StaticText( self, wx.ID_ANY, u"If session token is provided, please keep in mind,that this will be expire some time!", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.m_staticText9.Wrap( 200 )
 
-        fgSizer5.Add( self.m_staticText9, 1, wx.ALL|wx.EXPAND, 5 )
+        fgSizer5.Add( self.m_staticText9, 0, wx.ALL, 5 )
 
 
         fgSizer1.Add( fgSizer5, 1, wx.EXPAND, 5 )
@@ -1147,6 +1147,17 @@ class dialogConfiguration ( wx.Dialog ):
 
 
         fgSizer1.Add( fgSizer7, 1, wx.EXPAND, 5 )
+
+        bSizer19 = wx.BoxSizer( wx.VERTICAL )
+
+        self.checkBoxLoadOnStartup = wx.CheckBox( self, wx.ID_ANY, u"Load AWS resources during startup?", wx.DefaultPosition, wx.DefaultSize, 0 )
+        bSizer19.Add( self.checkBoxLoadOnStartup, 0, wx.ALL, 5 )
+
+        self.checkBoxCheckForUpdates = wx.CheckBox( self, wx.ID_ANY, u"Check for updates during startup?", wx.DefaultPosition, wx.DefaultSize, 0 )
+        bSizer19.Add( self.checkBoxCheckForUpdates, 0, wx.ALL, 5 )
+
+
+        fgSizer1.Add( bSizer19, 1, wx.EXPAND, 5 )
 
         bSizer2 = wx.BoxSizer( wx.HORIZONTAL )
 
