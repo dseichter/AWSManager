@@ -1,9 +1,12 @@
 # import the newly created GUI file
 import wx
+import wx.propgrid
+import wx.grid
 
 import aws_ecs
 import settings
 import iconsaws
+import webbrowser
 
 
 def aws_ecs_reload(self, event):
@@ -100,11 +103,12 @@ def aws_ecs_load_details(self, event):
     serviceevents = service_details["services"][0]["events"]
     # load the events of the service
     self.gridECS_Events.ClearGrid()
+    self.gridECS_Events.DeleteRows(0, self.gridECS_Events.GetNumberRows())
     self.gridECS_Events.AppendRows(len(serviceevents))
-    self.gridEC2_Volumes.SetColLabelSize(18)
+    self.gridECS_Events.SetColLabelSize(18)
     # add six columns to the grid
-    self.gridEC2_Volumes.SetColLabelValue(0, "Timestamp")
-    self.gridEC2_Volumes.SetColLabelValue(1, "Message")
+    self.gridECS_Events.SetColLabelValue(0, "Timestamp")
+    self.gridECS_Events.SetColLabelValue(1, "Message")
     for i, serviceevent in enumerate(serviceevents):
         self.gridECS_Events.SetCellValue(i, 0, str(serviceevent["createdAt"]))
         self.gridECS_Events.SetCellValue(i, 1, serviceevent["message"])
@@ -112,12 +116,67 @@ def aws_ecs_load_details(self, event):
 
 
 def aws_ecs_refresh_service(self, event):
-    print("Implement me: refresh service")
+    aws_ecs_load_details(self, event)
 
 
 def aws_ec2_change_desiredcount(self, event):
-    print("Implement me: change desired count")
+    # get the selected item
+    item = self.treeECS.GetSelection()
+    if not item:
+        return
+    
+    # check, if the selected item is a cluster (has children)
+    if self.treeECS.ItemHasChildren(self.treeECS.GetSelection()):
+        return
+    
+    # now we know, that the selected item is a service
+    service = self.treeECS.GetItemText(self.treeECS.GetSelection()).split(" ")[0]
+    cluster = self.treeECS.GetItemText(
+        self.treeECS.GetItemParent(self.treeECS.GetSelection())
+    )
+    
+    desired_count_current = self.textCtrlECS_DesiredCount.GetValue()
+    
+    # open a dialog and ask the user for the desired count
+    dlg = wx.TextEntryDialog(
+        self, "Please enter the desired count for the service", "Desired Count", value=desired_count_current,
+    )
+    dlg.SetMaxLength(2)
+
+    # Accept only integers
+    if dlg.ShowModal() == wx.ID_OK:
+        desired_count_new = int(dlg.GetValue())
+        
+        if desired_count_current != desired_count_new:
+            aws_ecs.set_ecs_desired_count(settings.read_config()["region"], cluster, service, desired_count_new)
+        
+        aws_ecs_load_details(self, event)
+    dlg.Destroy()
 
 
 def aws_ecs_open_mgmt_console(self, event):
-    print("Implement me: open management console")
+    item = self.treeECS.GetSelection()
+    if not item:
+        return
+
+    # check, if the selected item is a cluster (has children)
+    if self.treeECS.ItemHasChildren(self.treeECS.GetSelection()):
+        return
+
+    # now we know, that the selected item is a service
+    service = self.treeECS.GetItemText(self.treeECS.GetSelection()).split(" ")[0]
+    cluster = self.treeECS.GetItemText(
+        self.treeECS.GetItemParent(self.treeECS.GetSelection())
+    )
+
+    if service and cluster:
+        webbrowser.open_new_tab(
+            "https://"
+            + settings.read_config()["region"]
+            + ".console.aws.amazon.com/ecs/home?region="
+            + settings.read_config()["region"]
+            + "#/clusters/"
+            + cluster
+            + "/services/"
+            + service
+        )

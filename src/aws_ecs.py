@@ -41,3 +41,11 @@ def get_ecs_service_details(region, cluster, service):
     ecs = session.client("ecs", region_name=region)
     service_details = ecs.describe_services(cluster=cluster, services=[service])
     return service_details
+
+
+# set the desired count of a service
+def set_ecs_desired_count(region, cluster, service, count):
+    session = aws_session_handler.get_session()
+    ecs = session.client("ecs", region_name=region)
+    response = ecs.update_service(cluster=cluster, service=service, desiredCount=count)
+    return response
