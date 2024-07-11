@@ -117,6 +117,26 @@ class AWSManagerFrame(gui.MainFrame):
 
         # add the version to the label
         self.SetTitle(helper.NAME + " " + helper.VERSION)
+        
+        # load the configuration
+        config = settings.read_config()
+        if config["load_on_startup"]:
+            self.aws_ec2_reload(event)
+            self.aws_lambda_reload(event)
+            self.aws_s3_reload(event)
+            self.aws_rds_reload(event)
+            self.aws_cloudfront_reload(event)
+            self.aws_ecs_reload(event)
+            
+        if config["check_for_updates"]:
+            if helper.check_for_new_release():
+                result = wx.MessageBox(
+                    "A new release is available.\nWould you like to open the download page?",
+                    "Update available",
+                    wx.YES_NO | wx.ICON_INFORMATION,
+                )
+                if result == wx.YES:
+                    webbrowser.open_new_tab(helper.RELEASES)
 
     def miFileClose(self, event):
         self.Close()
@@ -128,9 +148,7 @@ class AWSManagerFrame(gui.MainFrame):
         dlg.Destroy()
 
     def miHelpSupport(self, event):
-        webbrowser.open_new_tab(
-            "https://github.com/dseichter/AWSManager"
-        )  # Add the URL of the GitHub repository
+        webbrowser.open_new_tab("https://github.com/dseichter/AWSManager")
 
     def miHelpUpdate(self, event):
         if helper.check_for_new_release():

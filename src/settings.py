@@ -27,6 +27,10 @@ def create_config():
         data["aws_profile"] = ""
     if "region" not in data:
         data["region"] = "eu-central-1"
+    if "load_on_startup" not in data:
+        data["load_on_startup"] = False
+    if "check_for_updates" not in data:
+        data["check_for_updates"] = True        
 
     with open(CONFIGFILE, "w") as f:
         json.dump(data, f, indent=4, sort_keys=True)

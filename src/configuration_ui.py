@@ -26,7 +26,6 @@ class DialogConfiguration(gui.dialogConfiguration):
         self.comboBoxAwsProfile.Append(profiles)
         # read all available regions
         regions = settings.get_regions()
-        print(regions)
         # set the values
         self.comboBoxAwsDefaultRegion.Clear()
         self.comboBoxAwsDefaultRegion.Append(regions)
@@ -39,6 +38,8 @@ class DialogConfiguration(gui.dialogConfiguration):
         self.textAwsSessionToken.SetValue(config["aws_session_token"])
         self.comboBoxAwsProfile.SetValue(config["aws_profile"])
         self.comboBoxAwsDefaultRegion.SetValue(config["region"])
+        self.checkBoxLoadOnStartup.SetValue(config["load_on_startup"])
+        self.checkBoxCheckForUpdates.SetValue(config["check_for_updates"])
 
         self.Layout()
         self.Fit()
@@ -52,6 +53,8 @@ class DialogConfiguration(gui.dialogConfiguration):
         settings.save_config("aws_session_token", self.textAwsSessionToken.GetValue())
         settings.save_config("aws_profile", self.comboBoxAwsProfile.GetValue())
         settings.save_config("region", self.comboBoxAwsDefaultRegion.GetValue())
+        settings.save_config("load_on_startup", self.checkBoxLoadOnStartup.GetValue())
+        settings.save_config("check_for_updates", self.checkBoxCheckForUpdates.GetValue())
         # close the dialog
         self.Close()
 

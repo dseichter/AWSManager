@@ -1148,6 +1148,17 @@ class dialogConfiguration ( wx.Dialog ):
 
         fgSizer1.Add( fgSizer7, 1, wx.EXPAND, 5 )
 
+        bSizer19 = wx.BoxSizer( wx.VERTICAL )
+
+        self.checkBoxLoadOnStartup = wx.CheckBox( self, wx.ID_ANY, u"Load AWS resources during startup?", wx.DefaultPosition, wx.DefaultSize, 0 )
+        bSizer19.Add( self.checkBoxLoadOnStartup, 0, wx.ALL, 5 )
+
+        self.checkBoxCheckForUpdates = wx.CheckBox( self, wx.ID_ANY, u"Check for updates during startup?", wx.DefaultPosition, wx.DefaultSize, 0 )
+        bSizer19.Add( self.checkBoxCheckForUpdates, 0, wx.ALL, 5 )
+
+
+        fgSizer1.Add( bSizer19, 1, wx.EXPAND, 5 )
+
         bSizer2 = wx.BoxSizer( wx.HORIZONTAL )
 
         self.buttonSave = wx.Button( self, wx.ID_ANY, u"Save", wx.DefaultPosition, wx.DefaultSize, 0 )
