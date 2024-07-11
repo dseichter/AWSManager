@@ -9793,8 +9793,8 @@
             </object>
             <object class="sizeritem" expanded="false">
               <property name="border">5</property>
-              <property name="flag">wxALL|wxEXPAND</property>
-              <property name="proportion">1</property>
+              <property name="flag">wxALL</property>
+              <property name="proportion">0</property>
               <object class="wxStaticText" expanded="false">
                 <property name="BottomDockable">1</property>
                 <property name="LeftDockable">1</property>
@@ -9824,7 +9824,7 @@
                 <property name="gripper">0</property>
                 <property name="hidden">0</property>
                 <property name="id">wxID_ANY</property>
-                <property name="label">If session token is provided, please keep in mind, that this will be expire some time!</property>
+                <property name="label">If session token is provided, please keep in mind,that this will be expire some time!</property>
                 <property name="markup">0</property>
                 <property name="max_size"></property>
                 <property name="maximize_button">0</property>
@@ -9850,7 +9850,7 @@
                 <property name="window_extra_style"></property>
                 <property name="window_name"></property>
                 <property name="window_style"></property>
-                <property name="wrap">-1</property>
+                <property name="wrap">200</property>
               </object>
             </object>
           </object>

@@ -117,17 +117,37 @@ class AWSManagerFrame(gui.MainFrame):
 
         # add the version to the label
         self.SetTitle(helper.NAME + " " + helper.VERSION)
-        
+
         # load the configuration
         config = settings.read_config()
         if config["load_on_startup"]:
+            # create dialog with a progress bar
+            dlg = wx.ProgressDialog(
+                "AWSManager",
+                "Loading AWS resources...",
+                maximum=100,
+                style=wx.PD_APP_MODAL | wx.PD_AUTO_HIDE,
+            )
+            dlg.Show()
+            dlg.Update(10, "Loading EC2 instances...")
             self.aws_ec2_reload(event)
+            dlg.Update(30, "Loading Lambda functions...")
             self.aws_lambda_reload(event)
+            dlg.Update(50, "Loading S3 buckets...")
             self.aws_s3_reload(event)
+            dlg.Update(70, "Loading RDS instances...")
             self.aws_rds_reload(event)
+            dlg.Update(80, "Loading CloudFront distributions...")
             self.aws_cloudfront_reload(event)
+            dlg.Update(90, "Loading ECS services...")
             self.aws_ecs_reload(event)
-            
+            dlg.Update(100)
+            dlg.Destroy()
+            # select the first tab
+            self.m_auinotebook1.SetSelection(0)
+            # bring the window to the front
+            self.Raise()
+
         if config["check_for_updates"]:
             if helper.check_for_new_release():
                 result = wx.MessageBox(

@@ -30,7 +30,7 @@ def create_config():
     if "load_on_startup" not in data:
         data["load_on_startup"] = False
     if "check_for_updates" not in data:
-        data["check_for_updates"] = True        
+        data["check_for_updates"] = True
 
     with open(CONFIGFILE, "w") as f:
         json.dump(data, f, indent=4, sort_keys=True)
