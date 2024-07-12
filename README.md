@@ -2,8 +2,6 @@
 
 With **AWS Manager**, you manage your resources and services within Amazon Web Services (AWS). At the same time, you keep an overview of all running services. It is also possible to start and stop the services. I have tried to display the essential information. You can access detailed information about each instance via a direct link to the AWS Management Console.
 
-See current Freeware version (deprecated) of AWSManager at [dseichter.de](https://www.dseichter.de/aws-manager/).
-
 ![pep8](https://github.com/dseichter/AWSManager/actions/workflows/pep8.yml/badge.svg)
 ![trivy](https://github.com/dseichter/AWSManager/actions/workflows/trivy.yml/badge.svg)
 
