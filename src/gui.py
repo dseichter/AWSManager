@@ -212,10 +212,23 @@ class MainFrame ( wx.Frame ):
         # Columns
         self.gridEC2_Volumes.EnableDragColMove( False )
         self.gridEC2_Volumes.EnableDragColSize( True )
+        self.gridEC2_Volumes.SetColLabelValue( 0, u"Volume ID" )
+        self.gridEC2_Volumes.SetColLabelValue( 1, u"Device" )
+        self.gridEC2_Volumes.SetColLabelValue( 2, u"Type" )
+        self.gridEC2_Volumes.SetColLabelValue( 3, u"Size" )
+        self.gridEC2_Volumes.SetColLabelValue( 4, u"IOPS" )
+        self.gridEC2_Volumes.SetColLabelValue( 5, u"Throughput" )
+        self.gridEC2_Volumes.SetColLabelValue( 6, wx.EmptyString )
+        self.gridEC2_Volumes.SetColLabelValue( 7, wx.EmptyString )
+        self.gridEC2_Volumes.SetColLabelValue( 8, wx.EmptyString )
+        self.gridEC2_Volumes.SetColLabelValue( 9, wx.EmptyString )
+        self.gridEC2_Volumes.SetColLabelValue( 10, wx.EmptyString )
+        self.gridEC2_Volumes.SetColLabelSize( wx.grid.GRID_AUTOSIZE )
         self.gridEC2_Volumes.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
         # Rows
-        self.gridEC2_Volumes.EnableDragRowSize( True )
+        self.gridEC2_Volumes.EnableDragRowSize( False )
+        self.gridEC2_Volumes.SetRowLabelSize( 28 )
         self.gridEC2_Volumes.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
         # Label Appearance
@@ -238,7 +251,7 @@ class MainFrame ( wx.Frame ):
         self.panelEC2.SetSizer( bSizer8 )
         self.panelEC2.Layout()
         bSizer8.Fit( self.panelEC2 )
-        self.m_auinotebook1.AddPage( self.panelEC2, u"EC2", False, wx.NullBitmap )
+        self.m_auinotebook1.AddPage( self.panelEC2, u"EC2", True, wx.NullBitmap )
         self.panelLambda = wx.Panel( self.m_auinotebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
         bSizer3 = wx.BoxSizer( wx.VERTICAL )
 
@@ -690,10 +703,14 @@ class MainFrame ( wx.Frame ):
         # Columns
         self.gridECS_Events.EnableDragColMove( False )
         self.gridECS_Events.EnableDragColSize( True )
+        self.gridECS_Events.SetColLabelValue( 0, u"Timestamp" )
+        self.gridECS_Events.SetColLabelValue( 1, u"Message" )
+        self.gridECS_Events.SetColLabelSize( wx.grid.GRID_AUTOSIZE )
         self.gridECS_Events.SetColLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
         # Rows
-        self.gridECS_Events.EnableDragRowSize( True )
+        self.gridECS_Events.EnableDragRowSize( False )
+        self.gridECS_Events.SetRowLabelSize( 28 )
         self.gridECS_Events.SetRowLabelAlignment( wx.ALIGN_CENTER, wx.ALIGN_CENTER )
 
         # Label Appearance
@@ -716,7 +733,7 @@ class MainFrame ( wx.Frame ):
         self.panelECS.SetSizer( bSizer821 )
         self.panelECS.Layout()
         bSizer821.Fit( self.panelECS )
-        self.m_auinotebook1.AddPage( self.panelECS, u"ECS", True, wx.NullBitmap )
+        self.m_auinotebook1.AddPage( self.panelECS, u"ECS", False, wx.NullBitmap )
         self.panelCloudfront = wx.Panel( self.m_auinotebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
         bSizer83 = wx.BoxSizer( wx.VERTICAL )
 

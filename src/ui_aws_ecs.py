@@ -105,10 +105,6 @@ def aws_ecs_load_details(self, event):
     self.gridECS_Events.ClearGrid()
     self.gridECS_Events.DeleteRows(0, self.gridECS_Events.GetNumberRows())
     self.gridECS_Events.AppendRows(len(serviceevents))
-    self.gridECS_Events.SetColLabelSize(18)
-    # add six columns to the grid
-    self.gridECS_Events.SetColLabelValue(0, "Timestamp")
-    self.gridECS_Events.SetColLabelValue(1, "Message")
     for i, serviceevent in enumerate(serviceevents):
         self.gridECS_Events.SetCellValue(i, 0, str(serviceevent["createdAt"]))
         self.gridECS_Events.SetCellValue(i, 1, serviceevent["message"])
