@@ -247,8 +247,20 @@ class AWSManagerFrame(gui.MainFrame):
     def aws_s3_menu_delete_object(self, event):
         ui_aws_s3.aws_s3_menu_delete_object(self, event)
 
+    def aws_rds_load_details(self, event):
+        ui_aws_rds.aws_rds_load_details(self, event)
+
     def aws_rds_reload(self, event):
         ui_aws_rds.aws_rds_reload(self, event)
+
+    def aws_rds_refresh_dbinstance(self, event):
+        ui_aws_rds.aws_rds_refresh_dbinstance(self, event)
+
+    def aws_rds_open_mgmt_console(self, event):
+        ui_aws_rds.aws_rds_open_mgmt_console(self, event)
+
+    def aws_rds_change_state(self, event):
+        ui_aws_rds.aws_rds_change_state(self, event)
 
     def aws_ecs_load_details(self, event):
         ui_aws_ecs.aws_ecs_load_details(self, event)
