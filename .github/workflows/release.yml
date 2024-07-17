@@ -43,6 +43,9 @@ jobs:
           - name: 'Checkout'
             uses: actions/checkout@v4
 
+          - name: Update disitribution
+            run: sudo apt-get update && sudo apt-get upgrade -y
+
           - name: Install dependencies
             run: sudo apt-get install build-essential libgtk-3-dev
 
