@@ -51,6 +51,12 @@ List all your S3 buckets. By selecting the corresponding S3 bucket, you will get
 
 ![S3](images/s3.png "S3")
 
+### Amazon RDS
+
+List all your RDS database instances. By selecting the corresponding entry, you will get an overview of some details. You can change the state of your RDS.
+
+![RDS](images/rds.png "RDS")
+
 ### Amazon Cloudfront CDN
 
 Get a complete overview of all Cloudfront distributions within your account. Additionally, you can invalidate the existing cache without logging into the Management Console.

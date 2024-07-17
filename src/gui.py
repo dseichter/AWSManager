@@ -251,7 +251,7 @@ class MainFrame ( wx.Frame ):
         self.panelEC2.SetSizer( bSizer8 )
         self.panelEC2.Layout()
         bSizer8.Fit( self.panelEC2 )
-        self.m_auinotebook1.AddPage( self.panelEC2, u"EC2", True, wx.NullBitmap )
+        self.m_auinotebook1.AddPage( self.panelEC2, u"EC2", False, wx.NullBitmap )
         self.panelLambda = wx.Panel( self.m_auinotebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
         bSizer3 = wx.BoxSizer( wx.VERTICAL )
 
@@ -565,6 +565,130 @@ class MainFrame ( wx.Frame ):
         self.panelRDSTree.Layout()
         bSizer42.Fit( self.panelRDSTree )
         self.panelRDSDetails = wx.Panel( self.m_splitter12, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+        bSizer1311 = wx.BoxSizer( wx.VERTICAL )
+
+        fgSizerRDSDetails = wx.FlexGridSizer( 0, 3, 0, 0 )
+        fgSizerRDSDetails.AddGrowableCol( 1 )
+        fgSizerRDSDetails.SetFlexibleDirection( wx.BOTH )
+        fgSizerRDSDetails.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+
+        self.staticTextRDS_DBInstanceIdentifier = wx.StaticText( self.panelRDSDetails, wx.ID_ANY, u"DBInstanceIdentifier", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextRDS_DBInstanceIdentifier.Wrap( -1 )
+
+        fgSizerRDSDetails.Add( self.staticTextRDS_DBInstanceIdentifier, 0, wx.ALL, 5 )
+
+        self.textCtrlRDS_DBInstanceIdentifier = wx.TextCtrl( self.panelRDSDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerRDSDetails.Add( self.textCtrlRDS_DBInstanceIdentifier, 1, wx.ALL|wx.EXPAND, 5 )
+
+        self.buttonRDS_RefreshDBInstance = wx.Button( self.panelRDSDetails, wx.ID_ANY, u"Refresh", wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerRDSDetails.Add( self.buttonRDS_RefreshDBInstance, 0, wx.ALL, 5 )
+
+        self.staticTextRDS_Engine = wx.StaticText( self.panelRDSDetails, wx.ID_ANY, u"Engine", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextRDS_Engine.Wrap( -1 )
+
+        fgSizerRDSDetails.Add( self.staticTextRDS_Engine, 0, wx.ALL, 5 )
+
+        self.textCtrlRDS_Engine = wx.TextCtrl( self.panelRDSDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerRDSDetails.Add( self.textCtrlRDS_Engine, 1, wx.ALL|wx.EXPAND, 5 )
+
+        self.buttonRDS_OpenMgmtConsole = wx.Button( self.panelRDSDetails, wx.ID_ANY, u"Open in AWS", wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerRDSDetails.Add( self.buttonRDS_OpenMgmtConsole, 0, wx.ALL, 5 )
+
+        self.staticTextRDS_EngineVersion = wx.StaticText( self.panelRDSDetails, wx.ID_ANY, u"EngineVersion", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextRDS_EngineVersion.Wrap( -1 )
+
+        fgSizerRDSDetails.Add( self.staticTextRDS_EngineVersion, 0, wx.ALL, 5 )
+
+        self.textCtrlRDS_EngineVersion = wx.TextCtrl( self.panelRDSDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerRDSDetails.Add( self.textCtrlRDS_EngineVersion, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizerRDSDetails.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+        self.staticTextRDS_DBInstanceStatus = wx.StaticText( self.panelRDSDetails, wx.ID_ANY, u"DBInstanceStatus", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextRDS_DBInstanceStatus.Wrap( -1 )
+
+        fgSizerRDSDetails.Add( self.staticTextRDS_DBInstanceStatus, 0, wx.ALL, 5 )
+
+        self.textCtrlRDS_DBInstanceStatus = wx.TextCtrl( self.panelRDSDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerRDSDetails.Add( self.textCtrlRDS_DBInstanceStatus, 1, wx.ALL|wx.EXPAND, 5 )
+
+        self.buttonRDS_ChangeState = wx.Button( self.panelRDSDetails, wx.ID_ANY, u"Change State", wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerRDSDetails.Add( self.buttonRDS_ChangeState, 0, wx.ALL, 5 )
+
+        self.staticTextRDS_DBName = wx.StaticText( self.panelRDSDetails, wx.ID_ANY, u"DBName", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextRDS_DBName.Wrap( -1 )
+
+        fgSizerRDSDetails.Add( self.staticTextRDS_DBName, 0, wx.ALL, 5 )
+
+        self.textCtrlRDS_DBName = wx.TextCtrl( self.panelRDSDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerRDSDetails.Add( self.textCtrlRDS_DBName, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizerRDSDetails.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+        self.staticTextRDS_Endpoint = wx.StaticText( self.panelRDSDetails, wx.ID_ANY, u"Endpoint", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextRDS_Endpoint.Wrap( -1 )
+
+        fgSizerRDSDetails.Add( self.staticTextRDS_Endpoint, 0, wx.ALL, 5 )
+
+        self.textCtrlRDS_Endpoint = wx.TextCtrl( self.panelRDSDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerRDSDetails.Add( self.textCtrlRDS_Endpoint, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizerRDSDetails.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+        self.staticTextRDS_AllocatedStorage = wx.StaticText( self.panelRDSDetails, wx.ID_ANY, u"AllocatedStorage", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextRDS_AllocatedStorage.Wrap( -1 )
+
+        fgSizerRDSDetails.Add( self.staticTextRDS_AllocatedStorage, 0, wx.ALL, 5 )
+
+        self.textCtrlRDS_AllocatedStorage = wx.TextCtrl( self.panelRDSDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerRDSDetails.Add( self.textCtrlRDS_AllocatedStorage, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizerRDSDetails.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+        self.staticTextRDS_MultiAZ = wx.StaticText( self.panelRDSDetails, wx.ID_ANY, u"MultiAZ", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextRDS_MultiAZ.Wrap( -1 )
+
+        fgSizerRDSDetails.Add( self.staticTextRDS_MultiAZ, 0, wx.ALL, 5 )
+
+        self.textCtrlRDS_MultiAZ = wx.TextCtrl( self.panelRDSDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerRDSDetails.Add( self.textCtrlRDS_MultiAZ, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizerRDSDetails.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+        self.staticTextRDS_PubliclyAccessible = wx.StaticText( self.panelRDSDetails, wx.ID_ANY, u"PubliclyAccessible", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextRDS_PubliclyAccessible.Wrap( -1 )
+
+        fgSizerRDSDetails.Add( self.staticTextRDS_PubliclyAccessible, 0, wx.ALL, 5 )
+
+        self.textCtrlRDS_PubliclyAccessible = wx.TextCtrl( self.panelRDSDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizerRDSDetails.Add( self.textCtrlRDS_PubliclyAccessible, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizerRDSDetails.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+        self.staticTextRDS_Tags = wx.StaticText( self.panelRDSDetails, wx.ID_ANY, u"Tags", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextRDS_Tags.Wrap( -1 )
+
+        fgSizerRDSDetails.Add( self.staticTextRDS_Tags, 0, wx.ALL, 5 )
+
+        self.propertyGridRDS_Tags = wx.propgrid.PropertyGrid(self.panelRDSDetails, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.propgrid.PG_AUTO_SORT|wx.propgrid.PG_DEFAULT_STYLE|wx.propgrid.PG_LIMITED_EDITING)
+        fgSizerRDSDetails.Add( self.propertyGridRDS_Tags, 1, wx.ALL|wx.EXPAND, 5 )
+
+
+        fgSizerRDSDetails.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+
+        bSizer1311.Add( fgSizerRDSDetails, 1, wx.EXPAND, 5 )
+
+
+        self.panelRDSDetails.SetSizer( bSizer1311 )
+        self.panelRDSDetails.Layout()
+        bSizer1311.Fit( self.panelRDSDetails )
         self.m_splitter12.SplitVertically( self.panelRDSTree, self.panelRDSDetails, 0 )
         bSizer82.Add( self.m_splitter12, 1, wx.EXPAND, 5 )
 
@@ -572,7 +696,7 @@ class MainFrame ( wx.Frame ):
         self.panelRDS.SetSizer( bSizer82 )
         self.panelRDS.Layout()
         bSizer82.Fit( self.panelRDS )
-        self.m_auinotebook1.AddPage( self.panelRDS, u"RDS", False, wx.NullBitmap )
+        self.m_auinotebook1.AddPage( self.panelRDS, u"RDS", True, wx.NullBitmap )
         self.panelECS = wx.Panel( self.m_auinotebook1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
         bSizer821 = wx.BoxSizer( wx.VERTICAL )
 
@@ -889,7 +1013,11 @@ class MainFrame ( wx.Frame ):
         self.Bind( wx.EVT_MENU, self.aws_s3_menu_delete_object, id = self.menuItemS3_DeleteObject.GetId() )
         self.buttonS3_Upload.Bind( wx.EVT_BUTTON, self.aws_s3_upload_file )
         self.staticTextS3_Upload_DragZone.Bind( wx.EVT_DROP_FILES, self.aws_s3_drop_file )
+        self.treeRDS.Bind( wx.EVT_TREE_ITEM_ACTIVATED, self.aws_rds_load_details )
         self.buttonReloadRDS.Bind( wx.EVT_BUTTON, self.aws_rds_reload )
+        self.buttonRDS_RefreshDBInstance.Bind( wx.EVT_BUTTON, self.aws_rds_refresh_dbinstance )
+        self.buttonRDS_OpenMgmtConsole.Bind( wx.EVT_BUTTON, self.aws_rds_open_mgmt_console )
+        self.buttonRDS_ChangeState.Bind( wx.EVT_BUTTON, self.aws_rds_change_state )
         self.treeECS.Bind( wx.EVT_TREE_ITEM_ACTIVATED, self.aws_ecs_load_details )
         self.buttonReloadECS.Bind( wx.EVT_BUTTON, self.aws_ecs_reload )
         self.buttonECS_RefreshService.Bind( wx.EVT_BUTTON, self.aws_ecs_refresh_service )
@@ -984,7 +1112,19 @@ class MainFrame ( wx.Frame ):
     def aws_s3_drop_file( self, event ):
         event.Skip()
 
+    def aws_rds_load_details( self, event ):
+        event.Skip()
+
     def aws_rds_reload( self, event ):
+        event.Skip()
+
+    def aws_rds_refresh_dbinstance( self, event ):
+        event.Skip()
+
+    def aws_rds_open_mgmt_console( self, event ):
+        event.Skip()
+
+    def aws_rds_change_state( self, event ):
         event.Skip()
 
     def aws_ecs_load_details( self, event ):
