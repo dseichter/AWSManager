@@ -279,10 +279,10 @@ class MainFrame ( wx.Frame ):
         fgSizerLambdaDetails.SetFlexibleDirection( wx.BOTH )
         fgSizerLambdaDetails.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
 
-        self.staticTextELambda_FunctionName = wx.StaticText( self.panelLambdaDetails, wx.ID_ANY, u"FunctionName", wx.DefaultPosition, wx.DefaultSize, 0 )
-        self.staticTextELambda_FunctionName.Wrap( -1 )
+        self.staticTextLambda_FunctionName = wx.StaticText( self.panelLambdaDetails, wx.ID_ANY, u"FunctionName", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextLambda_FunctionName.Wrap( -1 )
 
-        fgSizerLambdaDetails.Add( self.staticTextELambda_FunctionName, 0, wx.ALL, 5 )
+        fgSizerLambdaDetails.Add( self.staticTextLambda_FunctionName, 0, wx.ALL, 5 )
 
         self.textCtrlLambda_FunctionName = wx.TextCtrl( self.panelLambdaDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
         fgSizerLambdaDetails.Add( self.textCtrlLambda_FunctionName, 1, wx.ALL|wx.EXPAND, 5 )
@@ -290,10 +290,10 @@ class MainFrame ( wx.Frame ):
         self.buttonLambda_RefreshFunction = wx.Button( self.panelLambdaDetails, wx.ID_ANY, u"Refresh", wx.DefaultPosition, wx.DefaultSize, 0 )
         fgSizerLambdaDetails.Add( self.buttonLambda_RefreshFunction, 0, wx.ALL, 5 )
 
-        self.staticTextELambda_FunctionArn = wx.StaticText( self.panelLambdaDetails, wx.ID_ANY, u"FunctionArn", wx.DefaultPosition, wx.DefaultSize, 0 )
-        self.staticTextELambda_FunctionArn.Wrap( -1 )
+        self.staticTextLambda_FunctionArn = wx.StaticText( self.panelLambdaDetails, wx.ID_ANY, u"FunctionArn", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextLambda_FunctionArn.Wrap( -1 )
 
-        fgSizerLambdaDetails.Add( self.staticTextELambda_FunctionArn, 0, wx.ALL, 5 )
+        fgSizerLambdaDetails.Add( self.staticTextLambda_FunctionArn, 0, wx.ALL, 5 )
 
         self.textCtrlLambda_FunctionArn = wx.TextCtrl( self.panelLambdaDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
         fgSizerLambdaDetails.Add( self.textCtrlLambda_FunctionArn, 1, wx.ALL|wx.EXPAND, 5 )
@@ -810,10 +810,10 @@ class MainFrame ( wx.Frame ):
         fgSizerECSEvents.SetFlexibleDirection( wx.BOTH )
         fgSizerECSEvents.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
 
-        self.staticTextEC2_Volumes1 = wx.StaticText( self.panelECSDetails, wx.ID_ANY, u"Last Events", wx.DefaultPosition, wx.DefaultSize, 0 )
-        self.staticTextEC2_Volumes1.Wrap( -1 )
+        self.staticTextECS_Events = wx.StaticText( self.panelECSDetails, wx.ID_ANY, u"Last Events", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextECS_Events.Wrap( -1 )
 
-        fgSizerECSEvents.Add( self.staticTextEC2_Volumes1, 0, wx.ALL, 5 )
+        fgSizerECSEvents.Add( self.staticTextECS_Events, 0, wx.ALL, 5 )
 
         self.gridECS_Events = wx.grid.Grid( self.panelECSDetails, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
 
@@ -918,10 +918,10 @@ class MainFrame ( wx.Frame ):
 
         fgSizerCloudfrontDetails.Add( ( 0, 0), 1, wx.EXPAND, 5 )
 
-        self.staticTextECloudfront_DomainName = wx.StaticText( self.panelCloudfrontDetails, wx.ID_ANY, u"DomainName", wx.DefaultPosition, wx.DefaultSize, 0 )
-        self.staticTextECloudfront_DomainName.Wrap( -1 )
+        self.staticTextCloudfront_DomainName = wx.StaticText( self.panelCloudfrontDetails, wx.ID_ANY, u"DomainName", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextCloudfront_DomainName.Wrap( -1 )
 
-        fgSizerCloudfrontDetails.Add( self.staticTextECloudfront_DomainName, 0, wx.ALL, 5 )
+        fgSizerCloudfrontDetails.Add( self.staticTextCloudfront_DomainName, 0, wx.ALL, 5 )
 
         self.textCtrlCloudfront_DomainName = wx.TextCtrl( self.panelCloudfrontDetails, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
         fgSizerCloudfrontDetails.Add( self.textCtrlCloudfront_DomainName, 1, wx.ALL|wx.EXPAND, 5 )
@@ -951,10 +951,10 @@ class MainFrame ( wx.Frame ):
 
         fgSizerCloudfrontDetails.Add( ( 0, 0), 1, wx.EXPAND, 5 )
 
-        self.staticTextEC2_Tags1 = wx.StaticText( self.panelCloudfrontDetails, wx.ID_ANY, u"Tags", wx.DefaultPosition, wx.DefaultSize, 0 )
-        self.staticTextEC2_Tags1.Wrap( -1 )
+        self.staticTextECloudfront_Tags = wx.StaticText( self.panelCloudfrontDetails, wx.ID_ANY, u"Tags", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextECloudfront_Tags.Wrap( -1 )
 
-        fgSizerCloudfrontDetails.Add( self.staticTextEC2_Tags1, 0, wx.ALL, 5 )
+        fgSizerCloudfrontDetails.Add( self.staticTextECloudfront_Tags, 0, wx.ALL, 5 )
 
         self.propertyGridCloudfront_Tags = wx.propgrid.PropertyGrid(self.panelCloudfrontDetails, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.propgrid.PG_AUTO_SORT|wx.propgrid.PG_DEFAULT_STYLE|wx.propgrid.PG_LIMITED_EDITING)
         fgSizerCloudfrontDetails.Add( self.propertyGridCloudfront_Tags, 1, wx.ALL|wx.EXPAND, 5 )
