@@ -240,7 +240,7 @@
             <object class="auinotebookpage" expanded="false">
               <property name="bitmap"></property>
               <property name="label">EC2</property>
-              <property name="select">0</property>
+              <property name="select">1</property>
               <object class="wxPanel" expanded="false">
                 <property name="BottomDockable">1</property>
                 <property name="LeftDockable">1</property>
@@ -2162,8 +2162,8 @@
                                     <property name="center_pane">0</property>
                                     <property name="close_button">1</property>
                                     <property name="col_label_horiz_alignment">wxALIGN_CENTER</property>
-                                    <property name="col_label_size"></property>
-                                    <property name="col_label_values"></property>
+                                    <property name="col_label_size">wxGRID_AUTOSIZE</property>
+                                    <property name="col_label_values">&quot;Volume ID&quot; &quot;Device&quot; &quot;Type&quot; &quot;Size&quot; &quot;IOPS&quot; &quot;Throughput&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot;</property>
                                     <property name="col_label_vert_alignment">wxALIGN_CENTER</property>
                                     <property name="cols">6</property>
                                     <property name="column_sizes"></property>
@@ -2177,7 +2177,7 @@
                                     <property name="drag_col_move">0</property>
                                     <property name="drag_col_size">1</property>
                                     <property name="drag_grid_size">0</property>
-                                    <property name="drag_row_size">1</property>
+                                    <property name="drag_row_size">0</property>
                                     <property name="editing">0</property>
                                     <property name="enabled">1</property>
                                     <property name="fg"></property>
@@ -2209,7 +2209,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="row_label_horiz_alignment">wxALIGN_CENTER</property>
-                                    <property name="row_label_size"></property>
+                                    <property name="row_label_size">28</property>
                                     <property name="row_label_values"></property>
                                     <property name="row_label_vert_alignment">wxALIGN_CENTER</property>
                                     <property name="row_sizes"></property>
@@ -5959,7 +5959,7 @@
             <object class="auinotebookpage" expanded="false">
               <property name="bitmap"></property>
               <property name="label">ECS</property>
-              <property name="select">1</property>
+              <property name="select">0</property>
               <object class="wxPanel" expanded="false">
                 <property name="BottomDockable">1</property>
                 <property name="LeftDockable">1</property>
@@ -7607,8 +7607,8 @@
                                     <property name="center_pane">0</property>
                                     <property name="close_button">1</property>
                                     <property name="col_label_horiz_alignment">wxALIGN_CENTER</property>
-                                    <property name="col_label_size"></property>
-                                    <property name="col_label_values"></property>
+                                    <property name="col_label_size">wxGRID_AUTOSIZE</property>
+                                    <property name="col_label_values">&quot;Timestamp&quot; &quot;Message&quot;</property>
                                     <property name="col_label_vert_alignment">wxALIGN_CENTER</property>
                                     <property name="cols">2</property>
                                     <property name="column_sizes"></property>
@@ -7622,7 +7622,7 @@
                                     <property name="drag_col_move">0</property>
                                     <property name="drag_col_size">1</property>
                                     <property name="drag_grid_size">0</property>
-                                    <property name="drag_row_size">1</property>
+                                    <property name="drag_row_size">0</property>
                                     <property name="editing">0</property>
                                     <property name="enabled">1</property>
                                     <property name="fg"></property>
@@ -7654,7 +7654,7 @@
                                     <property name="pos"></property>
                                     <property name="resize">Resizable</property>
                                     <property name="row_label_horiz_alignment">wxALIGN_CENTER</property>
-                                    <property name="row_label_size"></property>
+                                    <property name="row_label_size">28</property>
                                     <property name="row_label_values"></property>
                                     <property name="row_label_vert_alignment">wxALIGN_CENTER</property>
                                     <property name="row_sizes"></property>

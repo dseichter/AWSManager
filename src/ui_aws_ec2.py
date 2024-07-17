@@ -79,14 +79,6 @@ def aws_ec2_load_details(self, event):
         volumes = ec2_instance['BlockDeviceMappings']
         self.gridEC2_Volumes.DeleteRows(0, self.gridEC2_Volumes.GetNumberRows())
         self.gridEC2_Volumes.AppendRows(len(volumes))
-        self.gridEC2_Volumes.SetColLabelSize(18)
-        # add six columns to the grid
-        self.gridEC2_Volumes.SetColLabelValue(0, 'Volume ID')
-        self.gridEC2_Volumes.SetColLabelValue(1, 'Device')
-        self.gridEC2_Volumes.SetColLabelValue(2, 'Type')
-        self.gridEC2_Volumes.SetColLabelValue(3, 'Size')
-        self.gridEC2_Volumes.SetColLabelValue(4, 'IOPS')
-        self.gridEC2_Volumes.SetColLabelValue(5, 'Throughput')
         for i, volume in enumerate(volumes):
             volume_information = aws_ec2.get_ec2_volume(settings.read_config()['region'], volume['Ebs'].get('VolumeId', ''))
             self.gridEC2_Volumes.SetCellValue(i, 0, volume_information.get('VolumeId', ''))
