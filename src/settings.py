@@ -35,9 +35,9 @@ def create_config():
     if "aws_access_key_id" not in data:
         data["aws_access_key_id"] = ""
     if "aws_secret_access_key" not in data:
-        data["aws_secret_access_key"] = "" # nosec
+        data["aws_secret_access_key"] = ""  # nosec
     if "aws_session_token" not in data:
-        data["aws_session_token"] = "" # nosec
+        data["aws_session_token"] = ""  # nosec
     if "aws_profile" not in data:
         data["aws_profile"] = ""
     if "region" not in data:
