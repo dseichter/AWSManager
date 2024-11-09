@@ -16,6 +16,11 @@
 import boto3
 import settings
 
+import logging_config  # Setup the logging  # noqa: F401
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 # use the selected profile, if no profile is given, use the default profile or the provided credentials
 def get_session():

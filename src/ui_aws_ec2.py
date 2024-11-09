@@ -23,6 +23,11 @@ import settings
 import iconsaws
 import webbrowser
 
+import logging_config  # Setup the logging  # noqa: F401
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 def aws_ec2_refresh_instance(self, event):
     aws_ec2_load_details(self, event)

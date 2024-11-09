@@ -37,6 +37,11 @@ import ui_aws_rds
 import ui_aws_cloudfront
 import ui_aws_ecs
 
+import logging_config  # Setup the logging  # noqa: F401
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 class AWSManagerFrame(gui.MainFrame):
     # constructor

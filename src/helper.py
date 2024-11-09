@@ -15,7 +15,10 @@
 
 import urllib3
 import json
+import logging_config  # Setup the logging  # noqa: F401
 import logging
+
+logger = logging.getLogger(__name__)
 
 VERSION = "v2024-10-14"
 UPDATEURL = 'https://api.github.com/repos/dseichter/AWSManager/releases/latest'

@@ -17,6 +17,11 @@ import boto3
 import aws_session_handler
 import json
 
+import logging_config  # Setup the logging  # noqa: F401
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 # get all lambda functions of a region and return a list of functions
 def get_lambda_functions(region):

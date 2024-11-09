@@ -17,6 +17,11 @@ import boto3
 import aws_session_handler
 import json
 
+import logging_config  # Setup the logging  # noqa: F401
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 # get all cloudfront distributions and return a list of distributions
 def get_cloudfront_distributions():

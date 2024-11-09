@@ -16,6 +16,11 @@
 import boto3
 import aws_session_handler
 
+import logging_config  # Setup the logging  # noqa: F401
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 # get information about an ec2 instance
 def get_ec2_instance(region, instance_id):

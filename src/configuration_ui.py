@@ -23,6 +23,11 @@ import gui
 import settings
 import icons
 
+import logging_config  # Setup the logging  # noqa: F401
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 class DialogConfiguration(gui.dialogConfiguration):
     # constructor
@@ -55,6 +60,8 @@ class DialogConfiguration(gui.dialogConfiguration):
         self.comboBoxAwsDefaultRegion.SetValue(config["region"])
         self.checkBoxLoadOnStartup.SetValue(config["load_on_startup"])
         self.checkBoxCheckForUpdates.SetValue(config["check_for_updates"])
+        self.textCtrlConfigLogfile.SetValue(config["logfilename"])
+        self.comboBoxConfigLoglevel.SetValue(config["loglevel"])
 
         self.Layout()
         self.Fit()
@@ -70,6 +77,8 @@ class DialogConfiguration(gui.dialogConfiguration):
         settings.save_config("region", self.comboBoxAwsDefaultRegion.GetValue())
         settings.save_config("load_on_startup", self.checkBoxLoadOnStartup.GetValue())
         settings.save_config("check_for_updates", self.checkBoxCheckForUpdates.GetValue())
+        settings.save_config("logfilename", self.textCtrlConfigLogfile.GetValue())
+        settings.save_config("loglevel", self.comboBoxConfigLoglevel.GetValue())
         # close the dialog
         self.Close()
 

@@ -16,6 +16,11 @@
 import boto3
 import aws_session_handler
 
+import logging_config  # Setup the logging  # noqa: F401
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 # get all s3 buckets of a region and return a list of buckets
 def get_s3_buckets(region):

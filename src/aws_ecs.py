@@ -16,6 +16,11 @@
 import boto3
 import aws_session_handler
 
+import logging_config  # Setup the logging  # noqa: F401
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 # get all ECS clusters of a region and return a list of ECS clusters
 def get_ecs_clusters(region):
