@@ -22,6 +22,7 @@ import gui
 # import workdir specific libraries
 import settings
 import icons
+import webbrowser
 
 import logging_config  # Setup the logging  # noqa: F401
 import logging
@@ -91,3 +92,6 @@ class DialogConfiguration(gui.dialogConfiguration):
         # set the values
         self.comboBoxAwsProfile.Clear()
         self.comboBoxAwsProfile.Append(profiles)
+
+    def openLogfile(self, event):
+        webbrowser.open_new_tab(self.textCtrlConfigLogfile.GetValue())

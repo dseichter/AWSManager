@@ -25,6 +25,8 @@ logger = logging.getLogger(__name__)
 
 # get all lambda functions of a region and return a list of functions
 def get_lambda_functions(region):
+    logger.debug('START - get_lambda_functions(region)')
+    logger.debug('region: %s', region)
     session = aws_session_handler.get_session()
     lambda_client = session.client('lambda', region_name=region)
     functions = lambda_client.list_functions()
@@ -36,6 +38,9 @@ def get_lambda_functions(region):
 
 # get information about a lambda function
 def get_lambda_function(region, function_name):
+    logger.debug('START - get_lambda_function(region, function_name)')
+    logger.debug('region: %s', region)
+    logger.debug('function_name: %s', function_name)
     session = aws_session_handler.get_session()
     lambda_client = session.client('lambda', region_name=region)
     lambdafunction = lambda_client.get_function(FunctionName=function_name)
@@ -44,6 +49,10 @@ def get_lambda_function(region, function_name):
 
 # invoke a lambda function
 def invoke_lambda_function(region, function_name, payload):
+    logger.debug('START - invoke_lambda_function(region, function_name, payload)')
+    logger.debug('region: %s', region)
+    logger.debug('function_name: %s', function_name)
+    logger.debug('payload: %s', payload)
     session = aws_session_handler.get_session()
     lambda_client = session.client('lambda', region_name=region)
     response = lambda_client.invoke(FunctionName=function_name, Payload=payload)
