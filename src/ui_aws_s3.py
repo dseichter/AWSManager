@@ -22,6 +22,11 @@ import iconsaws
 import webbrowser
 import os
 
+import logging_config  # Setup the logging  # noqa: F401
+import logging
+
+logger = logging.getLogger(__name__)
+
 NEWKEY_DEFAULT = 'Select an object or key to upload a new file.'
 NEWFILE_DEFAULT = 'Drag and drop a file here to upload it to the selected key.'
 

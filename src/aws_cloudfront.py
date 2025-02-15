@@ -17,9 +17,15 @@ import boto3
 import aws_session_handler
 import json
 
+import logging_config  # Setup the logging  # noqa: F401
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 # get all cloudfront distributions and return a list of distributions
 def get_cloudfront_distributions():
+    logger.debug('START - get_cloudfront_distributions()')
     session = aws_session_handler.get_session()
     cloudfront = session.client('cloudfront')
     distributions = cloudfront.list_distributions()
@@ -31,6 +37,8 @@ def get_cloudfront_distributions():
 
 # get information about a cloudfront distribution
 def get_cloudfront_distribution(distribution_id):
+    logger.debug('START - get_cloudfront_distribution(distribution_id)')
+    logger.debug('distribution_id: %s', distribution_id)
     session = aws_session_handler.get_session()
     cloudfront = session.client('cloudfront')
     distribution = cloudfront.get_distribution(Id=distribution_id)
@@ -39,6 +47,9 @@ def get_cloudfront_distribution(distribution_id):
 
 # invalidate a cloudfront distribution
 def invalidate_cloudfront_distribution(distribution_id, paths):
+    logger.debug('START - invalidate_cloudfront_distribution(distribution_id, paths)')
+    logger.debug('distribution_id: %s', distribution_id)
+    logger.debug('paths: %s', paths)
     session = aws_session_handler.get_session()
     cloudfront = session.client('cloudfront')
     response = cloudfront.create_invalidation(DistributionId=distribution_id, InvalidationBatch={'Paths': {'Quantity': len(paths), 'Items': paths}, 'CallerReference': 'awsmanager'})
@@ -47,6 +58,8 @@ def invalidate_cloudfront_distribution(distribution_id, paths):
 
 # load tags of a cloudfront distribution
 def get_cloudfront_distribution_tags(distribution_id):
+    logger.debug('START - get_cloudfront_distribution_tags(distribution_id)')
+    logger.debug('distribution_id: %s', distribution_id)
     session = aws_session_handler.get_session()
     cloudfront = session.client('cloudfront')
     tags = cloudfront.list_tags_for_resource(Resource=distribution_id)

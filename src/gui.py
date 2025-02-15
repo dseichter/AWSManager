@@ -987,7 +987,6 @@ class MainFrame ( wx.Frame ):
         self.Centre( wx.BOTH )
 
         # Connect Events
-        self.Bind( wx.EVT_CLOSE, self.awsmanagerClose )
         self.Bind( wx.EVT_SHOW, self.awsmanagerShow )
         self.Bind( wx.EVT_MENU, self.miFileClose, id = self.menuitemFileClose.GetId() )
         self.Bind( wx.EVT_MENU, self.miExtrasConfiguration, id = self.menuitemExtrasConfiguration.GetId() )
@@ -1034,8 +1033,6 @@ class MainFrame ( wx.Frame ):
 
 
     # Virtual event handlers, override them in your derived class
-    def awsmanagerClose( self, event ):
-        event.Skip()
 
     def awsmanagerShow( self, event ):
         event.Skip()
@@ -1316,6 +1313,38 @@ class dialogConfiguration ( wx.Dialog ):
 
         fgSizer1.Add( bSizer19, 1, wx.EXPAND, 5 )
 
+        fgSizer19 = wx.FlexGridSizer( 0, 3, 0, 0 )
+        fgSizer19.AddGrowableCol( 1 )
+        fgSizer19.SetFlexibleDirection( wx.BOTH )
+        fgSizer19.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+
+        self.staticTextConfigLogfile = wx.StaticText( self, wx.ID_ANY, u"Logfile", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextConfigLogfile.Wrap( -1 )
+
+        fgSizer19.Add( self.staticTextConfigLogfile, 0, wx.ALL, 5 )
+
+        self.textCtrlConfigLogfile = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizer19.Add( self.textCtrlConfigLogfile, 1, wx.ALL|wx.EXPAND, 5 )
+
+        self.buttonConfigLogfile = wx.Button( self, wx.ID_ANY, u"Logfile", wx.DefaultPosition, wx.DefaultSize, 0 )
+        fgSizer19.Add( self.buttonConfigLogfile, 0, wx.ALL, 5 )
+
+        self.staticTextConfigLogLevel = wx.StaticText( self, wx.ID_ANY, u"Loglevel", wx.DefaultPosition, wx.DefaultSize, 0 )
+        self.staticTextConfigLogLevel.Wrap( -1 )
+
+        fgSizer19.Add( self.staticTextConfigLogLevel, 0, wx.ALL, 5 )
+
+        comboBoxConfigLoglevelChoices = [ u"DEBUG", u"ERROR" ]
+        self.comboBoxConfigLoglevel = wx.ComboBox( self, wx.ID_ANY, u"Combo!", wx.DefaultPosition, wx.DefaultSize, comboBoxConfigLoglevelChoices, 0 )
+        self.comboBoxConfigLoglevel.SetSelection( 1 )
+        fgSizer19.Add( self.comboBoxConfigLoglevel, 0, wx.ALL, 5 )
+
+
+        fgSizer19.Add( ( 0, 0), 1, wx.EXPAND, 5 )
+
+
+        fgSizer1.Add( fgSizer19, 1, wx.EXPAND, 5 )
+
         bSizer2 = wx.BoxSizer( wx.HORIZONTAL )
 
         self.buttonSave = wx.Button( self, wx.ID_ANY, u"Save", wx.DefaultPosition, wx.DefaultSize, 0 )
@@ -1337,6 +1366,7 @@ class dialogConfiguration ( wx.Dialog ):
         # Connect Events
         self.Bind( wx.EVT_SHOW, self.showConfig )
         self.buttonReloadAwsProfile.Bind( wx.EVT_BUTTON, self.reloadAwsProfiles )
+        self.buttonConfigLogfile.Bind( wx.EVT_BUTTON, self.openLogfile )
         self.buttonSave.Bind( wx.EVT_BUTTON, self.saveConfig )
         self.buttonCancel.Bind( wx.EVT_BUTTON, self.cancelConfig )
 
@@ -1349,6 +1379,9 @@ class dialogConfiguration ( wx.Dialog ):
         event.Skip()
 
     def reloadAwsProfiles( self, event ):
+        event.Skip()
+
+    def openLogfile( self, event ):
         event.Skip()
 
     def saveConfig( self, event ):

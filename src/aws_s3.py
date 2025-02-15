@@ -16,9 +16,16 @@
 import boto3
 import aws_session_handler
 
+import logging_config  # Setup the logging  # noqa: F401
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 # get all s3 buckets of a region and return a list of buckets
 def get_s3_buckets(region):
+    logger.debug('START - get_s3_buckets(region)')
+    logger.debug('region: %s', region)
     session = aws_session_handler.get_session()
     s3 = session.client('s3', region_name=region)
     buckets = s3.list_buckets()
@@ -30,6 +37,9 @@ def get_s3_buckets(region):
 
 # get all objects of a bucket
 def get_s3_bucket_objects(region, bucket_name):
+    logger.debug('START - get_s3_bucket_objects(region, bucket_name)')
+    logger.debug('region: %s', region)
+    logger.debug('bucket_name: %s', bucket_name)
     s3 = boto3.client('s3', region_name=region)
     objects = s3.list_objects_v2(Bucket=bucket_name)
     objects_list = []
@@ -40,6 +50,11 @@ def get_s3_bucket_objects(region, bucket_name):
 
 # download an object from a bucket into given file
 def download_object(region, bucket_name, object_name, file_name):
+    logger.debug('START - download_object(region, bucket_name, object_name, file_name)')
+    logger.debug('region: %s', region)
+    logger.debug('bucket_name: %s', bucket_name)
+    logger.debug('object_name: %s', object_name)
+    logger.debug('file_name: %s', file_name)
     session = aws_session_handler.get_session()
     s3 = session.client('s3', region_name=region)
     s3.download_file(bucket_name, object_name, file_name)
@@ -47,6 +62,11 @@ def download_object(region, bucket_name, object_name, file_name):
 
 # upload a file to a bucket
 def upload_file(region, bucket_name, file_name, object_name):
+    logger.debug('START - upload_file(region, bucket_name, file_name, object_name)')
+    logger.debug('region: %s', region)
+    logger.debug('bucket_name: %s', bucket_name)
+    logger.debug('file_name: %s', file_name)
+    logger.debug('object_name: %s', object_name)
     session = aws_session_handler.get_session()
     s3 = session.client('s3', region_name=region)
     s3.upload_file(file_name, bucket_name, object_name)
@@ -54,6 +74,10 @@ def upload_file(region, bucket_name, file_name, object_name):
 
 # delete an object from a bucket
 def delete_object(region, bucket_name, object_name):
+    logger.debug('START - delete_object(region, bucket_name, object_name)')
+    logger.debug('region: %s', region)
+    logger.debug('bucket_name: %s', bucket_name)
+    logger.debug('object_name: %s', object_name)
     session = aws_session_handler.get_session()
     s3 = session.client('s3', region_name=region)
     s3.delete_object(Bucket=bucket_name, Key=object_name)

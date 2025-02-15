@@ -16,9 +16,16 @@
 import boto3
 import aws_session_handler
 
+import logging_config  # Setup the logging  # noqa: F401
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 # get all rds databases of a region and return a list of rds databases
 def get_rds_databases(region):
+    logger.debug('START - get_rds_databases(region)')
+    logger.debug('region: %s', region)
     session = aws_session_handler.get_session()
     rds = session.client("rds", region_name=region)
     databases = rds.describe_db_instances()
@@ -29,6 +36,9 @@ def get_rds_databases(region):
 
 
 def get_rds_database(region, db_instance_identifier):
+    logger.debug('START - get_rds_database(region, db_instance_identifier)')
+    logger.debug('region: %s', region)
+    logger.debug('db_instance_identifier: %s', db_instance_identifier)
     session = aws_session_handler.get_session()
     rds = session.client("rds", region_name=region)
     database = rds.describe_db_instances(DBInstanceIdentifier=db_instance_identifier)
@@ -36,6 +46,9 @@ def get_rds_database(region, db_instance_identifier):
 
 
 def start_rds_database(region, db_instance_identifier):
+    logger.debug('START - start_rds_database(region, db_instance_identifier)')
+    logger.debug('region: %s', region)
+    logger.debug('db_instance_identifier: %s', db_instance_identifier)
     session = aws_session_handler.get_session()
     rds = session.client("rds", region_name=region)
     response = rds.start_db_instance(DBInstanceIdentifier=db_instance_identifier)
@@ -43,6 +56,9 @@ def start_rds_database(region, db_instance_identifier):
 
 
 def stop_rds_database(region, db_instance_identifier):
+    logger.debug('START - stop_rds_database(region, db_instance_identifier)')
+    logger.debug('region: %s', region)
+    logger.debug('db_instance_identifier: %s', db_instance_identifier)
     session = aws_session_handler.get_session()
     rds = session.client("rds", region_name=region)
     response = rds.stop_db_instance(DBInstanceIdentifier=db_instance_identifier)
@@ -50,6 +66,9 @@ def stop_rds_database(region, db_instance_identifier):
 
 
 def reboot_rds_database(region, db_instance_identifier):
+    logger.debug('START - reboot_rds_database(region, db_instance_identifier)')
+    logger.debug('region: %s', region)
+    logger.debug('db_instance_identifier: %s', db_instance_identifier)
     session = aws_session_handler.get_session()
     rds = session.client("rds", region_name=region)
     response = rds.reboot_db_instance(DBInstanceIdentifier=db_instance_identifier)
@@ -57,6 +76,9 @@ def reboot_rds_database(region, db_instance_identifier):
 
 
 def delete_rds_database(region, db_instance_identifier):
+    logger.debug('START - delete_rds_database(region, db_instance_identifier)')
+    logger.debug('region: %s', region)
+    logger.debug('db_instance_identifier: %s', db_instance_identifier)
     session = aws_session_handler.get_session()
     rds = session.client("rds", region_name=region)
     response = rds.delete_db_instance(DBInstanceIdentifier=db_instance_identifier)

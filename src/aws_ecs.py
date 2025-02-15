@@ -16,9 +16,16 @@
 import boto3
 import aws_session_handler
 
+import logging_config  # Setup the logging  # noqa: F401
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 # get all ECS clusters of a region and return a list of ECS clusters
 def get_ecs_clusters(region):
+    logger.debug('START - get_ecs_clusters(region)')
+    logger.debug('region: %s', region)
     session = aws_session_handler.get_session()
     ecs = session.client("ecs", region_name=region)
     clusters = ecs.list_clusters()
@@ -30,6 +37,9 @@ def get_ecs_clusters(region):
 
 # get all ECS services of a cluster and return a list of ECS services
 def get_ecs_services(region, cluster):
+    logger.debug('START - get_ecs_services(region, cluster)')
+    logger.debug('region: %s', region)
+    logger.debug('cluster: %s', cluster)
     session = aws_session_handler.get_session()
     ecs = session.client("ecs", region_name=region)
     services = ecs.list_services(cluster=cluster)
@@ -41,6 +51,10 @@ def get_ecs_services(region, cluster):
 
 # get all ECS tasks of a service and return a list of ECS tasks
 def get_ecs_tasks(region, cluster, service):
+    logger.debug('START - get_ecs_tasks(region, cluster, service)')
+    logger.debug('region: %s', region)
+    logger.debug('cluster: %s', cluster)
+    logger.debug('service: %s', service)
     session = aws_session_handler.get_session()
     ecs = session.client("ecs", region_name=region)
     tasks = ecs.list_tasks(cluster=cluster, serviceName=service)
@@ -52,6 +66,10 @@ def get_ecs_tasks(region, cluster, service):
 
 # load the details of the service
 def get_ecs_service_details(region, cluster, service):
+    logger.debug('START - get_ecs_service_details(region, cluster, service)')
+    logger.debug('region: %s', region)
+    logger.debug('cluster: %s', cluster)
+    logger.debug('service: %s', service)
     session = aws_session_handler.get_session()
     ecs = session.client("ecs", region_name=region)
     service_details = ecs.describe_services(cluster=cluster, services=[service])
@@ -60,6 +78,11 @@ def get_ecs_service_details(region, cluster, service):
 
 # set the desired count of a service
 def set_ecs_desired_count(region, cluster, service, count):
+    logger.debug('START - set_ecs_desired_count(region, cluster, service, count)')
+    logger.debug('region: %s', region)
+    logger.debug('cluster: %s', cluster)
+    logger.debug('service: %s', service)
+    logger.debug('count: %s', count)
     session = aws_session_handler.get_session()
     ecs = session.client("ecs", region_name=region)
     response = ecs.update_service(cluster=cluster, service=service, desiredCount=count)

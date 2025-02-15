@@ -14,10 +14,22 @@
 # along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 import json
+import tempfile
 import boto3
 import os
 
 CONFIGFILE = 'config.json'
+
+
+# load value from json file with given key
+def load_value_from_json_file(key):
+    with open("config.json", "r") as f:
+        data = json.load(f)
+
+    if key not in data:
+        return None
+
+    return data[key]
 
 
 def create_config():
@@ -46,6 +58,11 @@ def create_config():
         data["load_on_startup"] = False
     if "check_for_updates" not in data:
         data["check_for_updates"] = True
+    if 'logfilename' not in data:
+        log_dir = tempfile.gettempdir()
+        data['logfilename'] = os.path.join(log_dir, 'awsmanager.log')
+    if 'loglevel' not in data:
+        data['loglevel'] = 'ERROR'
 
     with open(CONFIGFILE, 'w') as f:
         json.dump(data, f, indent=4, sort_keys=True)

@@ -21,6 +21,11 @@ import settings
 import iconsaws
 import webbrowser
 
+import logging_config  # Setup the logging  # noqa: F401
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 def aws_rds_reload(self, event):
     # first, create the icons for the tree and assign them to the tree

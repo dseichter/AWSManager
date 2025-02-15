@@ -37,6 +37,11 @@ import ui_aws_rds
 import ui_aws_cloudfront
 import ui_aws_ecs
 
+import logging_config  # Setup the logging  # noqa: F401
+import logging
+
+logger = logging.getLogger(__name__)
+
 
 class AWSManagerFrame(gui.MainFrame):
     # constructor
@@ -122,9 +127,6 @@ class AWSManagerFrame(gui.MainFrame):
         self.menuItemS3_DeleteObject.SetBitmap(
             icons.delete.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap()
         )
-
-    def awsmanagerClose(self, event):
-        self.Close()
 
     def awsmanagerShow(self, event):
         # check if config.json exists, if not create it, if available, update it
