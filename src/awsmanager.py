@@ -128,9 +128,6 @@ class AWSManagerFrame(gui.MainFrame):
             icons.delete.GetBitmap().ConvertToImage().Rescale(16, 16).ConvertToBitmap()
         )
 
-    def awsmanagerClose(self, event):
-        self.Close()
-
     def awsmanagerShow(self, event):
         # check if config.json exists, if not create it, if available, update it
         settings.create_config()

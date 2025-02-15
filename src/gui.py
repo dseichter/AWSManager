@@ -987,7 +987,6 @@ class MainFrame ( wx.Frame ):
         self.Centre( wx.BOTH )
 
         # Connect Events
-        self.Bind( wx.EVT_CLOSE, self.awsmanagerClose )
         self.Bind( wx.EVT_SHOW, self.awsmanagerShow )
         self.Bind( wx.EVT_MENU, self.miFileClose, id = self.menuitemFileClose.GetId() )
         self.Bind( wx.EVT_MENU, self.miExtrasConfiguration, id = self.menuitemExtrasConfiguration.GetId() )
@@ -1034,8 +1033,6 @@ class MainFrame ( wx.Frame ):
 
 
     # Virtual event handlers, override them in your derived class
-    def awsmanagerClose( self, event ):
-        event.Skip()
 
     def awsmanagerShow( self, event ):
         event.Skip()
